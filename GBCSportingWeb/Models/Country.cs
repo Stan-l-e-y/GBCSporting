@@ -7,6 +7,6 @@ namespace GBCSportingWeb.Models
         [Key]
         public int CountryId { get; set; }
         [Required]
-        public string Name { get; set; }    
+        public string? Name { get; set; }    
     }
 }
