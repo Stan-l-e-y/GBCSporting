@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+﻿@*<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -46,4 +46,25 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
+</html>*@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - GBCSportingWeb</title>
+    <link rel="stylesheet" href="~/css/app.css" asp-append-version="true" />
+    @*<link rel="stylesheet" href="~/GBCSportingWeb.styles.css" asp-append-version="true" />*@
+</head>
+
+<body>
+    <h1 class="bg-blue-500">testy</h1>
+    <h1 class="bg-red-500">test</h1>
+    @RenderBody()
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+</body>
+
 </html>
