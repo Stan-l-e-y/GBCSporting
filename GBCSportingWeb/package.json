@@ -8,5 +8,7 @@
   "scripts": {
     "buildcss:dev": "npx tailwindcss-cli build -i ./Styles/app.css -o ./wwwroot/css/app.css --watch "
   },
-  "dependencies": {}
+  "dependencies": {
+    "daisyui": "^1.25.4"
+  }
 }
