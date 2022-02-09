@@ -6,7 +6,7 @@
     "tailwindcss": "^3.0.19"
   },
   "scripts": {
-    "buildcss:dev": "npx tailwindcss-cli build -i ./Styles/app.css -o ./wwwroot/css/app.css --watch "
+    "buildcss:dev": "npx tailwindcss build -i ./Styles/app.css -o ./wwwroot/css/app.css --watch "
   },
   "dependencies": {
     "daisyui": "^1.25.4"
