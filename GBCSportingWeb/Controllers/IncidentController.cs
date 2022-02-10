@@ -15,7 +15,9 @@ namespace GBCSportingWeb.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var incidents = context.Incidents.ToList();
+
+            return View(incidents);
         }
     }
 }

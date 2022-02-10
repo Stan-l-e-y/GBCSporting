@@ -10,5 +10,7 @@ namespace GBCSportingWeb.Models
         }
 
         public DbSet<Country> Countries { get; set; }
+
+        public DbSet<Incident> Incidents { get; set; }
     }
 }
