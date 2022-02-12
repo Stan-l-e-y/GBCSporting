@@ -1,1 +1,14 @@
 ﻿
+@model List<Incident>
+
+    @{
+        ViewBag.Title = "Incidents";
+    }
+
+<h2>Incidents</h2>
+<a asp-controller="Incident" asp-action="Add">Add a New Incident</a>
+<br />
+@foreach (var incident in Model){
+
+    <div>@incident.Title</div>
+}
