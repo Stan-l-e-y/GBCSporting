@@ -5,10 +5,23 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace GBCSportingWeb.Migrations
 {
-    public partial class AddIncidentsToDb : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Countries",
+                columns: table => new
+                {
+                    CountryId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Countries", x => x.CountryId);
+                });
+
             migrationBuilder.CreateTable(
                 name: "Customer",
                 columns: table => new
@@ -81,6 +94,48 @@ namespace GBCSportingWeb.Migrations
                         principalColumn: "TechnicianId");
                 });
 
+            migrationBuilder.InsertData(
+                table: "Countries",
+                columns: new[] { "CountryId", "Name" },
+                values: new object[] { 1, "Canada" });
+
+            migrationBuilder.InsertData(
+                table: "Customer",
+                column: "CustomerId",
+                values: new object[]
+                {
+                    1,
+                    2
+                });
+
+            migrationBuilder.InsertData(
+                table: "Product",
+                column: "ProductId",
+                values: new object[]
+                {
+                    1,
+                    2
+                });
+
+            migrationBuilder.InsertData(
+                table: "Technician",
+                column: "TechnicianId",
+                values: new object[]
+                {
+                    1,
+                    2
+                });
+
+            migrationBuilder.InsertData(
+                table: "Incidents",
+                columns: new[] { "IncidentId", "CustomerId", "DateClosed", "DateOpened", "Description", "ProductId", "TechnicianId", "Title" },
+                values: new object[] { 1, 1, new DateTime(2022, 2, 12, 16, 35, 25, 805, DateTimeKind.Local).AddTicks(2674), new DateTime(2022, 2, 12, 16, 35, 25, 805, DateTimeKind.Local).AddTicks(2644), null, 1, 1, "Problem!!" });
+
+            migrationBuilder.InsertData(
+                table: "Incidents",
+                columns: new[] { "IncidentId", "CustomerId", "DateClosed", "DateOpened", "Description", "ProductId", "TechnicianId", "Title" },
+                values: new object[] { 2, 2, new DateTime(2022, 2, 12, 16, 35, 25, 805, DateTimeKind.Local).AddTicks(2678), new DateTime(2022, 2, 12, 16, 35, 25, 805, DateTimeKind.Local).AddTicks(2677), null, 2, 2, "Another one!!!" });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Incidents_CustomerId",
                 table: "Incidents",
@@ -99,6 +154,9 @@ namespace GBCSportingWeb.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Countries");
+
             migrationBuilder.DropTable(
                 name: "Incidents");
 

@@ -37,6 +37,13 @@ namespace GBCSportingWeb.Migrations
                     b.HasKey("CountryId");
 
                     b.ToTable("Countries");
+
+                    b.HasData(
+                        new
+                        {
+                            CountryId = 1,
+                            Name = "Canada"
+                        });
                 });
 
             modelBuilder.Entity("GBCSportingWeb.Models.Customer", b =>
@@ -50,6 +57,16 @@ namespace GBCSportingWeb.Migrations
                     b.HasKey("CustomerId");
 
                     b.ToTable("Customer");
+
+                    b.HasData(
+                        new
+                        {
+                            CustomerId = 1
+                        },
+                        new
+                        {
+                            CustomerId = 2
+                        });
                 });
 
             modelBuilder.Entity("GBCSportingWeb.Models.Incident", b =>
@@ -91,6 +108,28 @@ namespace GBCSportingWeb.Migrations
                     b.HasIndex("TechnicianId");
 
                     b.ToTable("Incidents");
+
+                    b.HasData(
+                        new
+                        {
+                            IncidentId = 1,
+                            CustomerId = 1,
+                            DateClosed = new DateTime(2022, 2, 12, 16, 35, 25, 805, DateTimeKind.Local).AddTicks(2674),
+                            DateOpened = new DateTime(2022, 2, 12, 16, 35, 25, 805, DateTimeKind.Local).AddTicks(2644),
+                            ProductId = 1,
+                            TechnicianId = 1,
+                            Title = "Problem!!"
+                        },
+                        new
+                        {
+                            IncidentId = 2,
+                            CustomerId = 2,
+                            DateClosed = new DateTime(2022, 2, 12, 16, 35, 25, 805, DateTimeKind.Local).AddTicks(2678),
+                            DateOpened = new DateTime(2022, 2, 12, 16, 35, 25, 805, DateTimeKind.Local).AddTicks(2677),
+                            ProductId = 2,
+                            TechnicianId = 2,
+                            Title = "Another one!!!"
+                        });
                 });
 
             modelBuilder.Entity("GBCSportingWeb.Models.Product", b =>
@@ -104,6 +143,16 @@ namespace GBCSportingWeb.Migrations
                     b.HasKey("ProductId");
 
                     b.ToTable("Product");
+
+                    b.HasData(
+                        new
+                        {
+                            ProductId = 1
+                        },
+                        new
+                        {
+                            ProductId = 2
+                        });
                 });
 
             modelBuilder.Entity("GBCSportingWeb.Models.Technician", b =>
@@ -117,6 +166,16 @@ namespace GBCSportingWeb.Migrations
                     b.HasKey("TechnicianId");
 
                     b.ToTable("Technician");
+
+                    b.HasData(
+                        new
+                        {
+                            TechnicianId = 1
+                        },
+                        new
+                        {
+                            TechnicianId = 2
+                        });
                 });
 
             modelBuilder.Entity("GBCSportingWeb.Models.Incident", b =>
