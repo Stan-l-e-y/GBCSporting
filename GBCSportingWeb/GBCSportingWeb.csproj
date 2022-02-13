@@ -30,6 +30,10 @@
 
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+  </ItemGroup>
+
 	<Target Name="CheckForNpm" BeforeTargets="NpmInstall">
 		<Exec Command="npm -v" ContinueOnError="true">
 			<Output TaskParameter="ExitCode" PropertyName="ErrorCode" />
@@ -47,5 +51,6 @@
 		<!--<Exec Command="npm run buildcss:dev" Condition=" '$(Configuration)' == 'Debug' " />-->
 		<!--<Exec Command="npm run buildcss:release" Condition=" '$(Configuration)' == 'Release' " />-->
 	</Target>
+
 
 </Project>
