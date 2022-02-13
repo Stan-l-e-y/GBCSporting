@@ -22,33 +22,22 @@
                     <th class="bg-primary border-r-2 border-gray-700">Customer</th>
                     <th class="bg-primary border-r-2 border-gray-700">Product</th>
                     <th class="bg-primary">Date Opened</th>
+                    <th class="bg-primary"></th>
+                    <th class="bg-primary"></th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th>9</th>
-                    <td>Lesya Tinham</td>
-                    <td>Safety Technician IV</td>
-                    <td>Maroon</td>
+                @foreach (var incident in Model)
+                {
+                    <tr>
+                    <th>@incident.Title</th>
+                    <td>@incident.CustomerId</td>
+                    <td>@incident.ProductId</td>
+                    <td>@incident.DateOpened</td>
+                    <td></td>
+                    <td></td>
                 </tr>
-                <tr>
-                    <th>10</th>
-                    <td>Zaneta Tewkesbury</td>
-                    <td>VP Marketing</td>
-                    <td>Green</td>
-                </tr>
-                <tr>
-                    <th>11</th>
-                    <td>Andy Tipple</td>
-                    <td>Librarian</td>
-                    <td>Indigo</td>
-                </tr>
-                <tr>
-                    <th>12</th>
-                    <td>Sophi Biles</td>
-                    <td>Recruiting Manager</td>
-                    <td>Maroon</td>
-                </tr>
+                }                       
             </tbody>
         </table>
     </div>
