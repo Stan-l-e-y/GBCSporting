@@ -8,12 +8,10 @@
 <h1>Incidents</h1>
 <a asp-controller="Incident" asp-action="Add">Add a New Incident</a>
 <br />
-@foreach (var incident in Model){
 
-    <div>Title: @incident.Title</div>
-}
 
-<div class="card flex justify-center items-center">
+<div class="card flex justify-center items-center mt-40">
+    <h1 class="mb-20 text-4xl">Incident Manager</h1>
     <div class="w-7/12 overflow-x-auto sm:overflow-auto ">
         <table class="table w-full table-zebra">
             <thead>
