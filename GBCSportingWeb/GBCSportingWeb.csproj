@@ -20,12 +20,13 @@
     <PackageReference Include="Microsoft.AspNetCore.Mvc.DataAnnotations" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.RazorPages" Version="2.2.5" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Runtime" Version="2.2.0" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.1" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.1" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.1">
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.2">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Node.js" Version="5.3.0" />
 
   </ItemGroup>
 
@@ -42,7 +43,7 @@
 	</Target>
 
 	<Target Name="BuildCSS" BeforeTargets="Compile">
-		<Exec Command="npm run buildcss:dev"/>
+		<Exec Command="npm run buildcss:dev" />
 		<!--<Exec Command="npm run buildcss:dev" Condition=" '$(Configuration)' == 'Debug' " />-->
 		<!--<Exec Command="npm run buildcss:release" Condition=" '$(Configuration)' == 'Release' " />-->
 	</Target>
