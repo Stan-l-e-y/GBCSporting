@@ -5,12 +5,7 @@
         ViewBag.Title = "Incidents";
     }
 
-<h1>Incidents</h1>
-<a asp-controller="Incident" asp-action="Add">Add a New Incident</a>
-<br />
-
-
-<div class="card flex justify-center items-center mt-40">
+<div class="card flex justify-center items-center mt-36">
     <h1 class="mb-20 text-4xl">Incident Manager</h1>
     <div class="w-7/12 overflow-x-auto sm:overflow-auto ">
         <table class="table w-full table-zebra">
@@ -32,12 +27,16 @@
                     <td>@incident.CustomerId</td>
                     <td>@incident.ProductId</td>
                     <td>@incident.DateOpened</td>
-                    <td></td>
-                    <td></td>
+                    <td><a asp-controller="Incident" asp-action="Add" ><i class="fa-solid fa-pen-to-square"></i></a></td>
+                    <td><a asp-controller="Incident" asp-action="Add" ><i class="fa-solid fa-trash-can"></i></a></td>
+
                 </tr>
                 }                       
             </tbody>
         </table>
+
+        <a asp-controller="Incident" asp-action="Add" class="btn btn-primary mt-10" >Add Incident</a>
     </div>
 </div>
+
 
