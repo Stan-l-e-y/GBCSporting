@@ -5,10 +5,10 @@
         ViewBag.Title = "Incidents";
     }
 
-<h2>Incidents</h2>
+<h1>Incidents</h1>
 <a asp-controller="Incident" asp-action="Add">Add a New Incident</a>
 <br />
 @foreach (var incident in Model){
 
-    <div>@incident.Title</div>
+    <div>Title: @incident.Title</div>
 }
