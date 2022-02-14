@@ -25,5 +25,15 @@ namespace GBCSportingWeb.Controllers
 
             return View(incidents);
         }
+
+        [HttpGet]
+        public IActionResult Create()
+        {
+            ViewBag.Action = "Add";
+            ViewBag.Products = context.Product
+
+
+            return View();
+        }
     }
 }

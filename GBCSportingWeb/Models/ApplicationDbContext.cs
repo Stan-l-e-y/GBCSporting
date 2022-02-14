@@ -13,6 +13,12 @@ namespace GBCSportingWeb.Models
 
         public DbSet<Incident> Incidents { get; set; }
 
+        public DbSet<Product> Products { get; set; }
+
+        public DbSet<Customer> Customers { get; set; }
+
+        public DbSet<Technician> Technicianes { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Country>().HasData(

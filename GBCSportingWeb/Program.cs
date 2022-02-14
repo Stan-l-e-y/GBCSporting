@@ -36,8 +36,9 @@ app.UseEndpoints(endpoints =>
 {
     endpoints.MapControllers();
 
+
     endpoints.MapControllerRoute(
-        name: "Index",
+        name: "Index/Create",
         pattern: "{controller}/{action}"
         );
 
