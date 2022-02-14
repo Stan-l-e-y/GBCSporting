@@ -30,10 +30,11 @@ namespace GBCSportingWeb.Controllers
         public IActionResult Create()
         {
             ViewBag.Action = "Add";
-            ViewBag.Products = context.Product
+            ViewBag.Products = context.Products.OrderBy(p => p.ProductId).ToList();
+            ViewBag.Customers = context.Customers.OrderBy(c => c.CustomerId).ToList();
+            ViewBag.Technicians = context.Technicianes.OrderBy(t => t.TechnicianId).ToList();
 
-
-            return View();
+            return View("Edit", new Incident());
         }
     }
 }
