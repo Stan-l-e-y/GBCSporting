@@ -32,7 +32,7 @@ namespace GBCSportingWeb.Controllers
             ViewBag.Action = "Add";
             ViewBag.Products = context.Products.OrderBy(p => p.ProductId).ToList();
             ViewBag.Customers = context.Customers.OrderBy(c => c.CustomerId).ToList();
-            ViewBag.Technicians = context.Technicianes.OrderBy(t => t.TechnicianId).ToList();
+            ViewBag.Technicians = context.Technicians.OrderBy(t => t.TechnicianId).ToList();
 
             return View("Edit", new Incident());
         }
@@ -57,7 +57,7 @@ namespace GBCSportingWeb.Controllers
                 ViewBag.Action = (incident.IncidentId == 0) ? "Add" : "Edit";
                 ViewBag.Products = context.Products.OrderBy(p => p.ProductId).ToList();
                 ViewBag.Customers = context.Customers.OrderBy(c => c.CustomerId).ToList();
-                ViewBag.Technicians = context.Technicianes.OrderBy(t => t.TechnicianId).ToList();
+                ViewBag.Technicians = context.Technicians.OrderBy(t => t.TechnicianId).ToList();
 
                 return View(incident);
             }
