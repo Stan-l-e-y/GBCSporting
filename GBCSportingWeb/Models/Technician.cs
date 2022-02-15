@@ -16,7 +16,5 @@ namespace GBCSportingWeb.Models
         [Required(ErrorMessage = "Please enter a Phone Number")]
         public string? Phone { get; set; }
 
-        public String? Slug => Name?.Replace(' ', '-').ToLower();
-
     }
 }

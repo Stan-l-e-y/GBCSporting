@@ -33,8 +33,8 @@ namespace GBCSportingWeb.Models
                 new Product { ProductId = 2, });
 
             modelBuilder.Entity<Technician>().HasData(
-                new Technician { TechnicianId = 1, },
-                new Technician { TechnicianId = 2, });
+                new Technician { TechnicianId = 1, Name = "Sarah Sami", Email= "Sarah.Sami@georgebrown.ca", Phone = "4168290752"},
+                new Technician { TechnicianId = 2, Name = "Tanja Jamie", Email= "Tanja.Jamie@georgebrown.ca", Phone = "4167620781" });
 
             modelBuilder.Entity<Incident>().HasData(
                 new Incident { IncidentId = 1, CustomerId = 1, ProductId = 1, TechnicianId = 1, Title = "Problem!!", DateOpened = DateTime.Now, DateClosed = DateTime.Now },
