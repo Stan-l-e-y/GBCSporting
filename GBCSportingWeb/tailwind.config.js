@@ -2,7 +2,7 @@ module.exports = {
   plugins: [
         require('daisyui'),
   ],
-  content: ["./Views/**/*.cshtml"],
+    content: ["./Views/**/*.cshtml"  ],
   theme: {
     extend: {},
   },

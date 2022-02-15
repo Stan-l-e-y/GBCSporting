@@ -36,5 +36,31 @@ namespace GBCSportingWeb.Controllers
 
             return View("Edit", new Incident());
         }
+
+        [HttpPost]
+        public IActionResult Edit(Incident incident)
+        {
+            if (ModelState.IsValid)
+            {
+                if(incident.IncidentId == 0)
+                {
+                    context.Incidents.Add(incident);
+                }
+                else
+                {
+                    context.Incidents.Update(incident);
+                }
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                ViewBag.Action = (incident.IncidentId == 0) ? "Add" : "Edit";
+                ViewBag.Products = context.Products.OrderBy(p => p.ProductId).ToList();
+                ViewBag.Customers = context.Customers.OrderBy(c => c.CustomerId).ToList();
+                ViewBag.Technicians = context.Technicianes.OrderBy(t => t.TechnicianId).ToList();
+
+                return View(incident);
+            }
+        }
     }
 }
