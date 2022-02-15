@@ -17,7 +17,7 @@ namespace GBCSportingWeb.Models
 
         public DbSet<Customer> Customers { get; set; }
 
-        public DbSet<Technician> Technicianes { get; set; }
+        public DbSet<Technician> Technicians { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
