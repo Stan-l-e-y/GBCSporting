@@ -219,8 +219,7 @@ namespace GBCSportingWeb.Models
                 new Country { CountryId = 195, Name = "Zimbabwe" });
 
             modelBuilder.Entity<Customer>().HasData(
-                new Customer { CustomerId = 1, },
-                new Customer { CustomerId = 2, });
+                new Customer { CustomerId = 1, FirstName = "Thom", LastName = "Mundstock", Address="203 Avenua", City ="Toronto", State = "Ontario", PostalCode = "M2M 3U2", CountryId = 33, Email = "Thom.Mundstock@gmail.com" });
 
             modelBuilder.Entity<Product>().HasData(
                 new Product { ProductId = 1, },
