@@ -19,7 +19,21 @@ namespace GBCSportingWeb.Controllers
 
             return View(Technicians);
         }
+        [HttpGet]
+        public IActionResult Add()
+        {
+            ViewBag.Action = "Add";
+            return View("Edit", new Technician());
+        }
 
-
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            ViewBag.Action = "Edit";
+            
+            var technician = context.Technicians.Find(id);
+            return View(technician);
+        }
     }
+
 }
