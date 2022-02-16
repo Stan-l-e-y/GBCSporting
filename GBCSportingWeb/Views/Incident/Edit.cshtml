@@ -1,7 +1,6 @@
 ﻿@model Incident
 @{
     string action = ViewBag.Action;
-
 }
 
 <div class="flex flex-col justify-center items-center mt-36">
@@ -37,6 +36,7 @@
                         }
                     </select>
                 </div>
+
 
                 <div class="mt-5">
                     <label asp-for="Title" class="label">
@@ -109,7 +109,6 @@
 
                 <button  class="btn btn-primary mt-5">@(action == "Add" ? "Add" : "Update")</button>
                 <a asp-controller="Incident" asp-action="Index" class="btn btn-outline btn-error" >Cancel</a>
-
             </form>
          </div>
     </div>
