@@ -1,6 +1,7 @@
 ﻿@model Incident
 @{
     string action = ViewBag.Action;
+    string test = ViewBag.Test;
 
 }
 
@@ -106,7 +107,7 @@
                 </div>*@
 
                 <input type="hidden" asp-for="IncidentId"/>
-
+                
                 <button  class="btn btn-primary mt-5">@(action == "Add" ? "Add" : "Update")</button>
                 <a asp-controller="Incident" asp-action="Index" class="btn btn-outline btn-error" >Cancel</a>
 
