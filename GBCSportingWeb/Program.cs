@@ -5,6 +5,13 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddRouting(options =>
+{
+    options.AppendTrailingSlash = true;
+    options.LowercaseUrls = true;
+});
+
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(
     builder.Configuration.GetConnectionString("DefaultConnection")));
 
@@ -29,8 +36,9 @@ app.UseEndpoints(endpoints =>
 {
     endpoints.MapControllers();
 
+
     endpoints.MapControllerRoute(
-        name: "Index",
+        name: "Index/Create",
         pattern: "{controller}/{action}"
         );
 
