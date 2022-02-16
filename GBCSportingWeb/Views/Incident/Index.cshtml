@@ -2,8 +2,8 @@
 @model List<Incident>
 
     @{
-        ViewBag.Title = "Incidents";
-    }
+    ViewBag.Title = "Incidents";
+}
 
 <div class="card flex justify-center items-center mt-36">
     <h1 class="mb-20 text-4xl">Incident Manager</h1>
@@ -27,8 +27,8 @@
                     <td>@incident.CustomerId</td>
                     <td>@incident.ProductId</td>
                     <td>@incident.DateOpened</td>
-                    <td><a asp-controller="Incident" asp-action="Add" ><i class="fa-solid fa-pen-to-square"></i></a></td>
-                    <td><a asp-controller="Incident" asp-action="Add" ><i class="fa-solid fa-trash-can"></i></a></td>
+                    <td><a asp-controller="Incident" asp-action="Edit" asp-route-id="@incident.IncidentId" ><i class="fa-solid fa-pen-to-square"></i></a></td>
+                    <td><a asp-controller="Incident" asp-action="Delete" asp-route-id="@incident.IncidentId" ><i class="fa-solid fa-trash-can"></i></a></td>
 
                 </tr>
                 }                       
