@@ -26,8 +26,10 @@ namespace GBCSportingWeb.Models
 
         public Technician? Technician { get; set; }
 
+        [Display(Name = "Date Opened"), DataType(DataType.Date)]
         public DateTime? DateOpened { get; set; }
 
+        [Display(Name = "Date Opened"), DataType(DataType.Date)]
         public DateTime? DateClosed { get; set; }
     }
 }
