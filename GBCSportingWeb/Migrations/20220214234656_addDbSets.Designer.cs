@@ -4,6 +4,7 @@ using GBCSportingWeb.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GBCSportingWeb.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220214234656_addDbSets")]
+    partial class addDbSets
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -114,8 +116,8 @@ namespace GBCSportingWeb.Migrations
                         {
                             IncidentId = 1,
                             CustomerId = 1,
-                            DateClosed = new DateTime(2022, 2, 15, 18, 21, 53, 489, DateTimeKind.Local).AddTicks(8086),
-                            DateOpened = new DateTime(2022, 2, 15, 18, 21, 53, 489, DateTimeKind.Local).AddTicks(8058),
+                            DateClosed = new DateTime(2022, 2, 14, 18, 46, 56, 92, DateTimeKind.Local).AddTicks(1797),
+                            DateOpened = new DateTime(2022, 2, 14, 18, 46, 56, 92, DateTimeKind.Local).AddTicks(1768),
                             ProductId = 1,
                             TechnicianId = 1,
                             Title = "Problem!!"
@@ -124,8 +126,8 @@ namespace GBCSportingWeb.Migrations
                         {
                             IncidentId = 2,
                             CustomerId = 2,
-                            DateClosed = new DateTime(2022, 2, 15, 18, 21, 53, 489, DateTimeKind.Local).AddTicks(8090),
-                            DateOpened = new DateTime(2022, 2, 15, 18, 21, 53, 489, DateTimeKind.Local).AddTicks(8089),
+                            DateClosed = new DateTime(2022, 2, 14, 18, 46, 56, 92, DateTimeKind.Local).AddTicks(1801),
+                            DateOpened = new DateTime(2022, 2, 14, 18, 46, 56, 92, DateTimeKind.Local).AddTicks(1799),
                             ProductId = 2,
                             TechnicianId = 2,
                             Title = "Another one!!!"
@@ -163,36 +165,18 @@ namespace GBCSportingWeb.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TechnicianId"), 1L, 1);
 
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Phone")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("TechnicianId");
 
-                    b.ToTable("Technicians");
+                    b.ToTable("Technicianes");
 
                     b.HasData(
                         new
                         {
-                            TechnicianId = 1,
-                            Email = "Sarah.Sami@georgebrown.ca",
-                            Name = "Sarah Sami",
-                            Phone = "4168290752"
+                            TechnicianId = 1
                         },
                         new
                         {
-                            TechnicianId = 2,
-                            Email = "Tanja.Jamie@georgebrown.ca",
-                            Name = "Tanja Jamie",
-                            Phone = "4167620781"
+                            TechnicianId = 2
                         });
                 });
 
