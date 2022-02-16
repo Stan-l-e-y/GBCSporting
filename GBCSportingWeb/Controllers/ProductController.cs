@@ -16,8 +16,6 @@ namespace GBCSportingWeb.Controllers
 
         public IActionResult Index()
         {
-            // var products = context.Products
-               //  .Include(i => i.)
             return View();
         }
     }

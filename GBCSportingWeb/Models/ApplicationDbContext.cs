@@ -29,8 +29,8 @@ namespace GBCSportingWeb.Models
                 new Customer { CustomerId = 2, });
 
             modelBuilder.Entity<Product>().HasData(
-                new Product { ProductId = 1, },
-                new Product { ProductId = 2, });
+                new Product { ProductId = 1, ProductName = "Thom", YearlyPrice = 99.99, ReleaseDate = DateTime.Now},
+                new Product { ProductId = 2, ProductName = "Edward", YearlyPrice = 115.98, ReleaseDate = DateTime.Now });
 
             modelBuilder.Entity<Technician>().HasData(
                 new Technician { TechnicianId = 1, Name = "Sarah Sami", Email= "Sarah.Sami@georgebrown.ca", Phone = "4168290752"},
