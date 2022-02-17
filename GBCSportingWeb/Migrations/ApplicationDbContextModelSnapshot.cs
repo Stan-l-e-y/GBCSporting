@@ -1123,8 +1123,10 @@ namespace GBCSportingWeb.Migrations
                         {
                             IncidentId = 1,
                             CustomerId = 1,
+
                             DateClosed = new DateTime(2022, 2, 17, 0, 16, 41, 307, DateTimeKind.Local).AddTicks(3703),
                             DateOpened = new DateTime(2022, 2, 17, 0, 16, 41, 307, DateTimeKind.Local).AddTicks(3652),
+
                             ProductId = 1,
                             TechnicianId = 1,
                             Title = "Problem!!"
@@ -1133,8 +1135,10 @@ namespace GBCSportingWeb.Migrations
                         {
                             IncidentId = 2,
                             CustomerId = 2,
+
                             DateClosed = new DateTime(2022, 2, 17, 0, 16, 41, 307, DateTimeKind.Local).AddTicks(3714),
                             DateOpened = new DateTime(2022, 2, 17, 0, 16, 41, 307, DateTimeKind.Local).AddTicks(3711),
+
                             ProductId = 2,
                             TechnicianId = 2,
                             Title = "Another one!!!"
@@ -1149,6 +1153,17 @@ namespace GBCSportingWeb.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProductId"), 1L, 1);
 
+                    b.Property<string>("ProductName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("ReleaseDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<double?>("YearlyPrice")
+                        .IsRequired()
+                        .HasColumnType("float");
+
                     b.HasKey("ProductId");
 
                     b.ToTable("Products");
@@ -1156,11 +1171,17 @@ namespace GBCSportingWeb.Migrations
                     b.HasData(
                         new
                         {
-                            ProductId = 1
+                            ProductId = 1,
+                            ProductName = "Thom",
+                            ReleaseDate = new DateTime(2022, 2, 16, 15, 36, 20, 726, DateTimeKind.Local).AddTicks(2250),
+                            YearlyPrice = 99.989999999999995
                         },
                         new
                         {
-                            ProductId = 2
+                            ProductId = 2,
+                            ProductName = "Edward",
+                            ReleaseDate = new DateTime(2022, 2, 16, 15, 36, 20, 726, DateTimeKind.Local).AddTicks(2264),
+                            YearlyPrice = 115.98
                         });
                 });
 
