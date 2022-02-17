@@ -1,50 +1,22 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+<div class="flex flex-col  justify-center items-center">
+    <h1 class="mt-20 text-4xl">Menu</h1>
+    <div class=" flex  justify-center items-center text-center bg-neutral w-3/12 rounded-box mt-20">
 
-<div class="text-center">
+        <div class="w-full flex  justify-center items-center p-10">
+            <ul class="menu bg-base-100 menu-compact lg:menu-normal w-10/12 p-2 rounded-box">
+                <li><a>Manage Products</a></li>
+                <li><a>Manage Technicians</a></li>
+                <li><a asp-controller="Customer" asp-action="Index">
+                    Manage Customers
+                </a></li>
+                <li><a  asp-controller="Incident" asp-action="Index">
+                    Manage Incidents
+                </a></li>
+            </ul>
+        </div>
 
-    <h1 class="bg-blue-500 mt-10">Welcomesss heyyyyyyy hello </h1>
-    <h1>NEW CHANGE</h1>
-    
-    <div class="text-green-200">Weed</div>
-    <h1 class="flex flex-row">testy</h1>
-    <h1 class="bg-green-500">test</h1>
-
-    <div class="flex justify-center mt-10 mb-10 ">
-      <div class="p-6 card bordered ">
-          <div class="form-control">
-            <label class="cursor-pointer label">
-              <span class="label-text mr-20">Neutral</span> 
-              <input type="radio" name="opt" checked="checked" class="radio" value="">
-            </label>
-          </div> 
-          <div class="form-control">
-            <label class="cursor-pointer label">
-              <span class="label-text">Primary</span> 
-              <input type="radio" name="opt" checked="checked" class="radio radio-primary" value="">
-            </label>
-          </div> 
-          <div class="form-control">
-            <label class="cursor-pointer label">
-              <span class="label-text">Secondary</span> 
-              <input type="radio" name="opt" checked="checked" class="radio radio-secondary" value="">
-            </label>
-          </div> 
-          <div class="form-control">
-            <label class="cursor-pointer label">
-              <span class="label-text">Accent</span> 
-              <input type="radio" name="opt" checked="checked" class="radio radio-accent" value="">
-            </label>
-          </div> 
-          <div class="form-control">
-            <label class="label">
-              <span class="label-text">Disabled</span> 
-              <input type="radio" name="opt" checked="checked" value="" disabled="disabled" class="radio">
-            </label>
-          </div>
-      </div>
     </div>
-<button class="btn btn-primary">daisyUI Button</button>
-
 </div>
