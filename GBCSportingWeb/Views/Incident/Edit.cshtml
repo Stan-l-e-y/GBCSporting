@@ -65,19 +65,6 @@
                     </select>
                 </div>
 
-               @* <label asp-for="DateOpened" class="label mt-5">
-                    <span class="label-text">Date Opened</span>
-                </label>
-                <div class=" "data-theme="light" >
-                    <div class="datepicker  form-floating mb-3 " data-mdb-toggle-button="false">
-                        <input type="text"
-                               asp-for="DateOpened"
-                               class=" form-control block  px-3 py-1.5 text-base font-normal w-9/12  bg-neutral bg-clip-padding rounded-lg border-gray-300 rounded transition ease-in-out m-0   focus:border-blue-600 focus:outline-none"
-                               placeholder="Select a date" data-mdb-toggle="datepicker" />
-                        <label for="floatingInput" class="">Select a date</label>
-                    </div>
-                </div>*@
-
                 <div>
                     <label asp-for="DateOpened" class="label mt-5">
                         <span class="label-text">Date Opened</span>
@@ -91,19 +78,6 @@
                     </label>
                     <input class="rounded-lg p-2 input w-6/12" type="date" asp-for="DateClosed" />
                 </div>
-
-               @* <label asp-for="DateClosed" class="label mt-5">
-                    <span class="label-text">Date Closed</span>
-                </label>
-                <div class=" "data-theme="light" >
-                    <div class="datepicker  form-floating mb-3 " data-mdb-toggle-button="false">
-                        <input type="text"
-                               asp-for="DateClosed"
-                               class=" form-control block  px-3 py-1.5 text-base font-normal w-9/12  bg-neutral bg-clip-padding rounded-lg border-gray-300 rounded transition ease-in-out m-0   focus:border-blue-600 focus:outline-none"
-                               placeholder="Select a date" data-mdb-toggle="datepicker" />
-                        <label for="floatingInput" class="">Select a date</label>
-                    </div>
-                </div>*@
 
                 <input type="hidden" asp-for="IncidentId"/>
 

@@ -3,11 +3,20 @@
 
     @{
     ViewBag.Title = "Incidents";
+
 }
 
 <div class="card flex justify-center items-center mt-36">
     <h1 class="mb-20 text-4xl">Incident Manager</h1>
-    <div class="w-7/12 overflow-x-auto sm:overflow-auto ">
+    <div class="w-7/12 overflow-x-auto sm:overflow-auto " x-data="{
+                            open: false,
+                            toggle() {
+                                this.open = this.open ? this.close() : true
+                            },
+                            close(){
+                                this.open = false
+                            }
+                         }">
         <table class="table w-full table-zebra">
             <thead>
                 <tr >
@@ -27,14 +36,23 @@
                     <td>@incident.CustomerId</td>
                     <td>@incident.ProductId</td>
                     <td>@incident.DateOpened</td>
+                        @{
+                            var id = @incident.IncidentId;
+                        }
                     <td><a asp-controller="Incident" asp-action="Edit" asp-route-id="@incident.IncidentId" ><i class="fa-solid fa-pen-to-square"></i></a></td>
-                    <td><a asp-controller="Incident" asp-action="Delete" asp-route-id="@incident.IncidentId" ><i class="fa-solid fa-trash-can"></i></a></td>
-
-                </tr>
-                }                       
+                    <td>
+                        <i x-on:click="toggle()" class="fa-solid fa-trash-can hover:cursor-pointer">
+                            <form x-show="open" asp-action="Delete" method="post">
+                                <input type="hidden" asp-for="@incident.IncidentId"/>
+                                <button class=" btn btn-primary absolute right-60" >Hi</button>
+                            </form>
+                        </i>
+                    </td>
+                    </tr>
+                }         
+                
             </tbody>
         </table>
-
         <a asp-controller="Incident" asp-action="Create" class="btn btn-primary mt-10" >Add Incident</a>
     </div>
 </div>
