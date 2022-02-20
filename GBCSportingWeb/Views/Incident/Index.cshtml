@@ -40,11 +40,11 @@
                             var id = @incident.IncidentId;
                         }
                     <td><a asp-controller="Incident" asp-action="Edit" asp-route-id="@incident.IncidentId" ><i class="fa-solid fa-pen-to-square"></i></a></td>
-                    <td>
-                        <i x-on:click="toggle()" class="fa-solid fa-trash-can hover:cursor-pointer">
-                            <form x-show="open" asp-action="Delete" method="post">
+                    <td >
+                        <i x-on:click="toggle()" class="fa-solid fa-trash-can hover:cursor-pointer" >
+                            <form x-show="open" asp-action="Delete" method="post" >
                                 <input type="hidden" asp-for="@incident.IncidentId"/>
-                                <button class=" btn btn-primary absolute right-60" >Hi</button>
+                                <button  class=" btn btn-primary absolute right-60" >Hi</button>
                             </form>
                         </i>
                     </td>
