@@ -45,7 +45,7 @@ namespace GBCSportingWeb.Controllers
                 else
                     context.Technicians.Update(technician);
                 context.SaveChanges();
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Technician");
             }
             else
             {
@@ -66,7 +66,7 @@ namespace GBCSportingWeb.Controllers
         {
             context.Technicians.Remove(technician);
             context.SaveChanges();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Technician");
         }
     }
 
