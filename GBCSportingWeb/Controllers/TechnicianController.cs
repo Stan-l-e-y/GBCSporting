@@ -20,7 +20,7 @@ namespace GBCSportingWeb.Controllers
             return View(Technicians);
         }
         [HttpGet]
-        public IActionResult Add()
+        public IActionResult Create()
         {
             ViewBag.Action = "Add";
             return View("Edit", new Technician());
