@@ -75,16 +75,10 @@ namespace GBCSportingWeb.Controllers
                 return View(incident);
             }
         }
-        //[HttpGet]
-        //public IActionResult Delete(int id)
-        //{
-        //    var incident = context.Incidents.Find(id);
-        //    return View(incident);
-        //}
+
         [HttpGet]
         public IActionResult Delete(int id)
         {
-            //var test = incident;
             var incident = context.Incidents.Find(id);
             context.Incidents.Remove(incident);
             context.SaveChanges();
