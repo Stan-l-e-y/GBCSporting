@@ -3,11 +3,30 @@
 
     @{
     ViewBag.Title = "Incidents";
+
 }
+@{
+    string test = "yo";
+}
+
 
 <div class="card flex justify-center items-center mt-36">
     <h1 class="mb-20 text-4xl">Incident Manager</h1>
-    <div class="w-7/12 overflow-x-auto sm:overflow-auto ">
+    <div class="w-7/12 overflow-x-auto sm:overflow-auto " x-data="{
+            open: false,
+            toggle() {
+                this.open = this.open ? this.close() : true
+            },
+            id: 0,
+            close(){
+                this.open = false
+            },
+        title: 's',
+        custId: 0,
+        prodId: 0,
+        dateOp: 0,
+        model: 0
+        }">
         <table class="table w-full table-zebra">
             <thead>
                 <tr >
@@ -27,16 +46,48 @@
                     <td>@incident.CustomerId</td>
                     <td>@incident.ProductId</td>
                     <td>@incident.DateOpened</td>
-                    <td><a asp-controller="Incident" asp-action="Edit" asp-route-id="@incident.IncidentId" ><i class="fa-solid fa-pen-to-square"></i></a></td>
-                    <td><a asp-controller="Incident" asp-action="Delete" asp-route-id="@incident.IncidentId" ><i class="fa-solid fa-trash-can"></i></a></td>
 
-                </tr>
-                }                       
+
+                        
+                    <td><a asp-controller="Incident" asp-action="Edit" asp-route-id="@incident.IncidentId" ><i class="fa-solid fa-pen-to-square"></i></a></td>
+                    <td >
+                        <i x-on:click="toggle()" class="deleteId  fa-solid fa-trash-can hover:cursor-pointer" data-id="@incident.IncidentId" >
+
+                        </i>
+
+                    </td>
+                    </tr>
+                }         
+            
             </tbody>
         </table>
 
+         <a id="selectedId" x-show="open" href="/incident/delete/" class="btn btn-primary mt-10"  >Delete</a>
         <a asp-controller="Incident" asp-action="Create" class="btn btn-primary mt-10" >Add Incident</a>
     </div>
 </div>
 
+
+<script type="text/javascript">
+    (function () {
+        var deleteBtns = document.querySelectorAll('.deleteId');
+        deleteBtns.forEach(btn => {
+            btn.addEventListener('click', getSelectedId);
+        });
+    })();
+
+    function getSelectedId() {
+        var id = this.getAttribute("data-id");
+
+        document.getElementById("selectedId").setAttribute('href', '/incident/delete/' + id);
+
+    }
+
+    window.onbeforeunload = function () {
+        var deleteBtns = document.querySelectorAll('.deleteId');
+        deleteBtns.forEach(btn => {
+            btn.removeEventListener('click', getSelectedId);
+        });
+    }
+</script>
 
