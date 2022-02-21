@@ -38,7 +38,7 @@ app.UseEndpoints(endpoints =>
 
     endpoints.MapControllerRoute(
         name: "Edit",
-        pattern: "{controller}/{action}/{id}"
+        pattern: "{controller}/{action}/{id?}"
         );
 
     endpoints.MapControllerRoute(
