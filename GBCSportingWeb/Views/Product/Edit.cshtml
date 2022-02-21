@@ -1,0 +1,35 @@
+@model Product
+@{
+    string action = ViewBag.Action;
+}
+
+<div class="flex flex-col justify-center items-center mt-36">
+    <h1 class="mb-20 text-4xl">@(action == "Add" ? "Add a new Product" : "Edit a Product")</h1>
+    <div class="bg-neutral w-3/12  pt-10 pb-10 rounded-lg ">
+
+        <div class=" ml-5 ">
+
+            <form asp-action="Edit" method="post">
+                <div asp-validation-summary="All" ></div>
+                <div class="mt-5">
+                    <label asp-for="ProductName" class="label">
+                        <span class="label-text">Product Name</span>
+                    </label>
+                    <input asp-for="ProductName" type="text" placeholder="Type here" class="input w-9/12 ">
+                </div>
+
+                <div class="mt-5">
+                    <label asp-for="YearlyPrice" class="label">
+                        <span class="label-text">Yearly Price</span>
+                    </label>
+                    <input asp-for="YearlyPrice" type="price" placeholder="Type here" class="input w-9/12 ">
+                </div>
+
+                <input type="hidden" asp-for="ProductId"/>
+
+                <button  class="btn btn-primary mt-5">@(action == "Add" ? "Add" : "Update")</button>
+                <a asp-controller="Product" asp-action="Index" class="btn btn-outline btn-error" >Cancel</a>
+            </form>
+         </div>
+    </div>
+</div>
