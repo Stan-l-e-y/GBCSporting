@@ -39,11 +39,8 @@
                         }
                     <td><a asp-controller="Technician" asp-action="Edit" asp-route-id="@technician.TechnicianId" ><i class="fa-solid fa-pen-to-square"></i></a></td>
                     <td >
-                        <i x-on:click="toggle()" class="fa-solid fa-trash-can hover:cursor-pointer" >
-                            <form x-show="open" asp-action="Delete" method="post" >
-                                <input type="hidden" asp-for="@technician.TechnicianId"/>
-                                <button  class=" btn btn-primary absolute right-60" >Hi</button>
-                            </form>
+                        <i x-on:click="toggle()" class="deleteId  fa-solid fa-trash-can hover:cursor-pointer" data-id="@technician.TechnicianId" >
+
                         </i>
                     </td>
                     </tr>
@@ -51,8 +48,30 @@
                 
             </tbody>
         </table>
+        <a id="selectedId" x-show="open" href="/incident/delete/" class="btn btn-primary mt-10"  >Delete</a>
         <a asp-controller="Technician" asp-action="Create" class="btn btn-primary mt-10" >Add Technician</a>
     </div>
 </div>
 
+<script type="text/javascript">
+    (function () {
+        var deleteBtns = document.querySelectorAll('.deleteId');
+        deleteBtns.forEach(btn => {
+            btn.addEventListener('click', getSelectedId);
+        });
+    })();
 
+    function getSelectedId() {
+        var id = this.getAttribute("data-id");
+
+        document.getElementById("selectedId").setAttribute('href', '/technician/delete/' + id);
+
+    }
+
+    window.onbeforeunload = function () {
+        var deleteBtns = document.querySelectorAll('.deleteId');
+        deleteBtns.forEach(btn => {
+            btn.removeEventListener('click', getSelectedId);
+        });
+    }
+</script>
