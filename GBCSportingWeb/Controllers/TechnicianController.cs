@@ -58,15 +58,9 @@ namespace GBCSportingWeb.Controllers
         public IActionResult Delete(int id)
         {
             var technician = context.Technicians.Find(id);
-            return View(technician);
-        }
-
-        [HttpPost]
-        public IActionResult Delete(Technician technician)
-        {
             context.Technicians.Remove(technician);
             context.SaveChanges();
-            return RedirectToAction("Index", "Technician");
+            return RedirectToAction("Index");
         }
     }
 
