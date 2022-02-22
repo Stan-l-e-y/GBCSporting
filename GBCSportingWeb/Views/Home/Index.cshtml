@@ -7,7 +7,9 @@
 
         <div class="w-full flex  justify-center items-center p-10">
             <ul class="menu bg-base-100 menu-compact lg:menu-normal w-10/12 p-2 rounded-box">
-                <li><a>Manage Products</a></li>
+                <li><a asp-controller="Product" asp-action="Index">
+                    Manage Products
+                </a></li>
                 <li><a asp-controller="Technician" asp-action="Index">
                     Manage Technicians
                 </a></li>
