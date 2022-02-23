@@ -20,7 +20,7 @@ namespace GBCSportingWeb.Models
         public string? PostalCode { get; set; }
         [Required(ErrorMessage = "Please choose a country.")]
         public int CountryId { get; set; }
-        public Country Country { get; set; }
+        public Country? Country { get; set; }
 
         // The Email and Phone fields are optional
         public string? Phone { get; set; }
