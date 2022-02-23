@@ -4,6 +4,7 @@ using GBCSportingWeb.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GBCSportingWeb.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220221175152_Product-Changes.2")]
+    partial class ProductChanges2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1123,8 +1125,8 @@ namespace GBCSportingWeb.Migrations
                         {
                             IncidentId = 1,
                             CustomerId = 1,
-                            DateClosed = new DateTime(2022, 2, 22, 17, 22, 32, 63, DateTimeKind.Local).AddTicks(125),
-                            DateOpened = new DateTime(2022, 2, 22, 17, 22, 32, 63, DateTimeKind.Local).AddTicks(123),
+                            DateClosed = new DateTime(2022, 2, 21, 14, 51, 51, 875, DateTimeKind.Local).AddTicks(8268),
+                            DateOpened = new DateTime(2022, 2, 21, 14, 51, 51, 875, DateTimeKind.Local).AddTicks(8266),
                             ProductId = 1,
                             TechnicianId = 1,
                             Title = "Problem!!"
@@ -1133,8 +1135,8 @@ namespace GBCSportingWeb.Migrations
                         {
                             IncidentId = 2,
                             CustomerId = 2,
-                            DateClosed = new DateTime(2022, 2, 22, 17, 22, 32, 63, DateTimeKind.Local).AddTicks(126),
-                            DateOpened = new DateTime(2022, 2, 22, 17, 22, 32, 63, DateTimeKind.Local).AddTicks(126),
+                            DateClosed = new DateTime(2022, 2, 21, 14, 51, 51, 875, DateTimeKind.Local).AddTicks(8269),
+                            DateOpened = new DateTime(2022, 2, 21, 14, 51, 51, 875, DateTimeKind.Local).AddTicks(8269),
                             ProductId = 2,
                             TechnicianId = 2,
                             Title = "Another one!!!"
@@ -1169,14 +1171,14 @@ namespace GBCSportingWeb.Migrations
                         {
                             ProductId = 1,
                             ProductName = "Thom",
-                            ReleaseDate = new DateTime(2022, 2, 22, 17, 22, 32, 63, DateTimeKind.Local).AddTicks(81),
+                            ReleaseDate = new DateTime(2022, 2, 21, 14, 51, 51, 875, DateTimeKind.Local).AddTicks(8218),
                             YearlyPrice = 99.989999999999995
                         },
                         new
                         {
                             ProductId = 2,
                             ProductName = "Edward",
-                            ReleaseDate = new DateTime(2022, 2, 22, 17, 22, 32, 63, DateTimeKind.Local).AddTicks(103),
+                            ReleaseDate = new DateTime(2022, 2, 21, 14, 51, 51, 875, DateTimeKind.Local).AddTicks(8227),
                             YearlyPrice = 115.98
                         });
                 });

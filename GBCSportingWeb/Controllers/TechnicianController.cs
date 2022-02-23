@@ -20,7 +20,7 @@ namespace GBCSportingWeb.Controllers
             return View(Technicians);
         }
         [HttpGet]
-        public IActionResult Add()
+        public IActionResult Create()
         {
             ViewBag.Action = "Add";
             return View("Edit", new Technician());
@@ -45,7 +45,7 @@ namespace GBCSportingWeb.Controllers
                 else
                     context.Technicians.Update(technician);
                 context.SaveChanges();
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Technician");
             }
             else
             {
@@ -58,15 +58,9 @@ namespace GBCSportingWeb.Controllers
         public IActionResult Delete(int id)
         {
             var technician = context.Technicians.Find(id);
-            return View(technician);
-        }
-
-        [HttpPost]
-        public IActionResult Delete(Technician technician)
-        {
             context.Technicians.Remove(technician);
             context.SaveChanges();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index");
         }
     }
 
