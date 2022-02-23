@@ -17,6 +17,7 @@ namespace GBCSportingWeb.Controllers
             var products = context.Products
                 .OrderBy(p => p.ProductName)
                 .ToList();
+
             return View(products);
         }
 
@@ -24,7 +25,6 @@ namespace GBCSportingWeb.Controllers
         public IActionResult Create()
         {
             ViewBag.Action = "Add";
-
             return View("Edit", new Product());
         }
 
@@ -43,9 +43,14 @@ namespace GBCSportingWeb.Controllers
             if (ModelState.IsValid)
             {
                 if (product.ProductId == 0)
+                {
                     context.Products.Add(product);
+                }
                 else
+                {
                     context.Products.Update(product);
+                    
+                }
                 context.SaveChanges();
                 return RedirectToAction("Index", "Product");
             }
@@ -60,15 +65,9 @@ namespace GBCSportingWeb.Controllers
         public IActionResult Delete(int id)
         {
             var product = context.Products.Find(id);
-            return View(product);
-        }
-
-        [HttpPost]
-        public IActionResult Delete(Product product)
-        {
             context.Products.Remove(product);
             context.SaveChanges();
-            return RedirectToAction("Index", "Product");
+            return RedirectToAction("Index");
         }
     }
 }
