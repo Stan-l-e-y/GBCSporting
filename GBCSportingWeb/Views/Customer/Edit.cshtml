@@ -1,1 +1,90 @@
 @model Customer
+@{
+    string action = ViewBag.Action;
+}
+<div class="flex flex-col justify-center items-center mt-36">
+    <h1 class="mb-20 text-4xl">@(action == "Add" ? "Add a new Customer" : "Edit a Customer")</h1>
+    <div class="bg-neutral w-3/12  pt-10 pb-10 rounded-lg ">
+
+        <div class=" ml-5 ">
+
+            <form asp-action="Edit" method="post">
+                <div asp-validation-summary="All" ></div>
+                <div class="mt-5">
+                    <label asp-for="FirstName" class="label required">
+                        <span class="label-text">First Name</span>
+                    </label>
+                    <input asp-for="FirstName" type="text" placeholder="Type here" class="input w-9/12 ">
+                </div>
+
+                <div class="mt-5">
+                    <label asp-for="LastName" class="label required">
+                        <span class="label-text">Last Name</span>
+                    </label>
+                    <input asp-for="LastName" type="text" placeholder="Type here" class="input w-9/12 ">
+                </div>
+
+                <div class="mt-5">
+                    <label asp-for="Address" class="label required">
+                        <span class="label-text">Address</span>
+                    </label>
+                    <input asp-for="Address" type="text" placeholder="Type here" class="input w-9/12 ">
+                </div>
+
+                <div class="mt-5">
+                    <label asp-for="City" class="label required">
+                        <span class="label-text">City</span>
+                    </label>
+                    <input asp-for="City" type="text" placeholder="Type here" class="input w-9/12 ">
+                </div>
+
+                <div class="mt-5">
+                    <label asp-for="State" class="label required">
+                        <span class="label-text">State</span>
+                    </label>
+                    <input asp-for="State" type="text" placeholder="Type here" class="input w-9/12 ">
+                </div>
+
+                <div class="mt-5">
+                    <label asp-for="PostalCode" class="label required">
+                        <span class="label-text">Postal Code</span>
+                    </label>
+                    <input asp-for="PostalCode" type="text" placeholder="Type here" class="input w-9/12 ">
+                </div>
+
+                <div class="mt-5">
+                    <label asp-for="CountryId" class="label required">
+                        <span class="label-text">Country</span>
+                    </label>
+                    <select asp-for="CountryId" class="select w-9/12">
+                        <option disabled selected>Choose a Country</option>
+                        @foreach(Country c in ViewBag.Countries)
+                        {
+                            <option value="@c.CountryId">@c.Name</option>
+                        }
+                    </select>
+                </div>
+
+                <div class="mt-5">
+                    <label asp-for="Email" class="label">
+                        <span class="label-text">Email</span>
+                    </label>
+                    <input asp-for="Email" type="email" placeholder="Type here" class="input w-9/12 ">
+                </div>
+
+                <div>
+                    <label asp-for="Phone" class="label mt-5">
+                        <span class="label-text">Phone</span>
+                    </label>
+                   <input asp-for="Phone" type="text" placeholder="Type here" class="input w-9/12 ">
+                </div>
+
+                <input type="hidden" asp-for="CustomerId"/>
+
+                <button  class="btn btn-primary mt-5">@(action == "Add" ? "Add" : "Update")</button>
+                <a asp-controller="Customer" asp-action="Index" class="btn btn-outline btn-error" >Cancel</a>
+
+            </form>
+         </div>
+    </div>
+</div>
