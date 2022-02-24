@@ -19,7 +19,7 @@
                         <option disabled selected>Choose a Customer</option>
                         @foreach(Customer c in ViewBag.Customers)
                         {
-                            <option value="@c.CustomerId">@c.CustomerId</option>
+                            <option value="@c.CustomerId">@c.FirstName</option>
                         }
                     </select>
                 </div>
@@ -32,7 +32,7 @@
                         <option disabled selected>Choose a Product</option>
                         @foreach(Product p in ViewBag.Products)
                         {
-                            <option value="@p.ProductId">@p.ProductId</option>
+                            <option value="@p.ProductId">@p.ProductName</option>
                         }
                     </select>
                 </div>

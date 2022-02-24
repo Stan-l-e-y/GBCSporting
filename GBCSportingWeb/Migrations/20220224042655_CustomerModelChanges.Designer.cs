@@ -4,6 +4,7 @@ using GBCSportingWeb.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GBCSportingWeb.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220224042655_CustomerModelChanges")]
+    partial class CustomerModelChanges
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1082,23 +1084,10 @@ namespace GBCSportingWeb.Migrations
                             Address = "4th Avenue",
                             City = "NYC",
                             CountryId = 187,
-                            Email = "Stanley.Tsonev@gmail.com",
                             FirstName = "Stanley",
                             LastName = "Tsonev",
                             PostalCode = "J1C 8Y1",
                             State = "New York"
-                        },
-                        new
-                        {
-                            CustomerId = 3,
-                            Address = "7th Avenue",
-                            City = "Tehran",
-                            CountryId = 80,
-                            Email = "Farshad.Jalali@gmail.com",
-                            FirstName = "Farshad",
-                            LastName = "Jalali",
-                            PostalCode = "k1C 9T1",
-                            State = "Tehran"
                         });
                 });
 
@@ -1147,8 +1136,8 @@ namespace GBCSportingWeb.Migrations
                         {
                             IncidentId = 1,
                             CustomerId = 1,
-                            DateClosed = new DateTime(2022, 2, 23, 23, 34, 52, 918, DateTimeKind.Local).AddTicks(9212),
-                            DateOpened = new DateTime(2022, 2, 23, 23, 34, 52, 918, DateTimeKind.Local).AddTicks(9208),
+                            DateClosed = new DateTime(2022, 2, 23, 23, 26, 55, 2, DateTimeKind.Local).AddTicks(6127),
+                            DateOpened = new DateTime(2022, 2, 23, 23, 26, 55, 2, DateTimeKind.Local).AddTicks(6123),
                             ProductId = 1,
                             TechnicianId = 1,
                             Title = "Problem!!"
@@ -1157,8 +1146,8 @@ namespace GBCSportingWeb.Migrations
                         {
                             IncidentId = 2,
                             CustomerId = 2,
-                            DateClosed = new DateTime(2022, 2, 23, 23, 34, 52, 918, DateTimeKind.Local).AddTicks(9217),
-                            DateOpened = new DateTime(2022, 2, 23, 23, 34, 52, 918, DateTimeKind.Local).AddTicks(9215),
+                            DateClosed = new DateTime(2022, 2, 23, 23, 26, 55, 2, DateTimeKind.Local).AddTicks(6132),
+                            DateOpened = new DateTime(2022, 2, 23, 23, 26, 55, 2, DateTimeKind.Local).AddTicks(6130),
                             ProductId = 2,
                             TechnicianId = 2,
                             Title = "Another one!!!"
@@ -1193,14 +1182,14 @@ namespace GBCSportingWeb.Migrations
                         {
                             ProductId = 1,
                             ProductName = "Thom",
-                            ReleaseDate = new DateTime(2022, 2, 23, 23, 34, 52, 918, DateTimeKind.Local).AddTicks(9132),
+                            ReleaseDate = new DateTime(2022, 2, 23, 23, 26, 55, 2, DateTimeKind.Local).AddTicks(6048),
                             YearlyPrice = 99.989999999999995
                         },
                         new
                         {
                             ProductId = 2,
                             ProductName = "Edward",
-                            ReleaseDate = new DateTime(2022, 2, 23, 23, 34, 52, 918, DateTimeKind.Local).AddTicks(9164),
+                            ReleaseDate = new DateTime(2022, 2, 23, 23, 26, 55, 2, DateTimeKind.Local).AddTicks(6083),
                             YearlyPrice = 115.98
                         });
                 });
