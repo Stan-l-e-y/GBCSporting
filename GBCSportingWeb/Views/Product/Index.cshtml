@@ -19,9 +19,10 @@
         <table class="table w-full table-zebra">
             <thead>
                 <tr >
-                    <th class="bg-primary  border-r-2 border-gray-700">Product ID</th>
+                    <th class="bg-primary border-r-2 border-gray-700">Product Code</th>
                     <th class="bg-primary border-r-2 border-gray-700">Name</th>
                     <th class="bg-primary border-r-2 border-gray-700">Yearly Price</th>
+                    <th class="bg-primary border-r-2 border-gray-700">Release Date</th>
                     <th class="bg-primary"></th>
                     <th class="bg-primary"></th>
                 </tr>
@@ -30,9 +31,10 @@
                 @foreach (var product in Model)
                 {
                     <tr>
-                    <th>@product.ProductId</th>
+                    <th>@product.ProductCode</th>
                     <td>@product.ProductName</td>
-                    <td>@product.YearlyPrice</td>
+                    <td>$@product.YearlyPrice</td>
+                    <th>@product.ReleaseDate</th>
                         @{
                             var id = @product.ProductId;
                         }
