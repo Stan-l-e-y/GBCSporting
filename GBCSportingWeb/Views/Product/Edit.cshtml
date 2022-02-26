@@ -12,6 +12,13 @@
             <form asp-action="Edit" method="post">
                 <div asp-validation-summary="All" ></div>
                 <div class="mt-5">
+                    <label asp-for="ProductCode" class="label">
+                        <span class="label-text">Product Code</span>
+                    </label>
+                    <input asp-for="ProductCode" type="text" placeholder="Type here" class="input w-9/12 ">
+                </div>
+
+                <div class="mt-5">
                     <label asp-for="ProductName" class="label">
                         <span class="label-text">Product Name</span>
                     </label>
@@ -23,6 +30,13 @@
                         <span class="label-text">Yearly Price</span>
                     </label>
                     <input asp-for="YearlyPrice" type="price" placeholder="Type here" class="input w-9/12 ">
+                </div>
+
+                <div class="mt-5">
+                    <label asp-for="ReleaseDate" class="label">
+                        <span class="label-text">Release Date</span>
+                    </label>
+                    <input asp-for="ReleaseDate" type="date" placeholder="Type here" class="input w-9/12 ">
                 </div>
 
                 <input type="hidden" asp-for="ProductId"/>

@@ -6,7 +6,15 @@
 
     <div class="card flex justify-center items-center mt-36">
         <h1 class="mb-20 text-4xl">Customer Manager</h1>
-        <div class="w-7/12 overflow-x-auto sm:overflow-auto ">
+        <div class="w-7/12 overflow-x-auto sm:overflow-auto " x-data="{
+                            open: false,
+                            toggle() {
+                                this.open = this.open ? this.close() : true
+                            },
+                            close(){
+                                this.open = false
+                            }
+                         }">
             <table class="table w-full table-zebra">
                 <thead>
                     <tr>
@@ -24,14 +32,51 @@
                         <th>@customer.FirstName @customer.LastName</th>
                         <td>@customer.Email</td>
                         <td>@customer.City</td>
-                        <td><a asp-controller="Customer" asp-action="Edit"><i class="fa-solid fa-pen-to-square"></i></a></td>
-                        <td><a asp-controller="Customer" asp-action="Delete"><i class="fa-solid fa-trash-can"></i></a></td>
+                        <td><a asp-controller="Customer" asp-action="Edit" asp-route-id="@customer.CustomerId"><i class="fa-solid fa-pen-to-square"></i></a></td>
+                        <td >
+                        <i x-on:click="toggle()" class="deleteId  fa-solid fa-trash-can hover:cursor-pointer" data-id="@customer.CustomerId" >
+                        </i>
+                        </td>
 
                     </tr>
                 }
                 </tbody>
             </table>
+            <div class="flex flex-col justify-center items-center">
+            <div class="absolute card w-96 glass  z-10 top-0 "  x-show="open">
+                <div class="card-body">
+                    <h2 class="card-title">Confirm Delete</h2>
+                    <p>Are you sure you want to delete this entry?</p>
+                    <div class="flex mt-10">
+                        <a id="selectedId"  href="/customer/delete/" class="btn bg-blue-600 btn-primary mr-3" >Delete</a>
+                        <button x-on:click="toggle()" class="btn btn-error">No</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
             <a asp-controller="Customer" asp-action="Create" class="btn btn-primary mt-10">Add Customer</a>
         </div>
     </div>
+    <script type="text/javascript">
+    (function () {
+        var deleteBtns = document.querySelectorAll('.deleteId');
+        deleteBtns.forEach(btn => {
+            btn.addEventListener('click', getSelectedId);
+        });
+    })();
+
+    function getSelectedId() {
+        var id = this.getAttribute("data-id");
+
+        document.getElementById("selectedId").setAttribute('href', '/customer/delete/' + id);
+
+    }
+
+    window.onbeforeunload = function () {
+        var deleteBtns = document.querySelectorAll('.deleteId');
+        deleteBtns.forEach(btn => {
+            btn.removeEventListener('click', getSelectedId);
+        });
+    }
+</script>

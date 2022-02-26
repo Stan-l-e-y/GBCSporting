@@ -219,11 +219,13 @@ namespace GBCSportingWeb.Models
                 new Country { CountryId = 195, Name = "Zimbabwe" });
 
             modelBuilder.Entity<Customer>().HasData(
-                new Customer { CustomerId = 1, FirstName = "Thom", LastName = "Mundstock", Address="203 Avenua", City ="Toronto", State = "Ontario", PostalCode = "M2M 3U2", CountryId = 33, Email = "Thom.Mundstock@gmail.com" });
+                new Customer { CustomerId = 1, FirstName = "Thom", LastName = "Mundstock", Address="203 Avenua", City ="Toronto", State = "Ontario", PostalCode = "M2M 3U2", CountryId = 33, Email = "Thom.Mundstock@gmail.com" },
+                new Customer { CustomerId = 2, FirstName = "Stanley", LastName = "Tsonev", Address = "4th Avenue", City = "NYC", State = "New York", PostalCode = "J1C 8Y1", CountryId = 187, Email="Stanley.Tsonev@gmail.com" },
+                new Customer { CustomerId = 3, FirstName = "Farshad", LastName = "Jalali", Address = "7th Avenue", City = "Tehran", State = "Tehran", PostalCode = "k1C 9T1", CountryId = 80, Email = "Farshad.Jalali@gmail.com" });
 
             modelBuilder.Entity<Product>().HasData(
-                new Product { ProductId = 1, ProductName = "Thom", YearlyPrice = 99.99, ReleaseDate = DateTime.Now},
-                new Product { ProductId = 2, ProductName = "Edward", YearlyPrice = 115.98, ReleaseDate = DateTime.Now });
+                new Product { ProductId = 1, ProductCode = "TPYR1090", ProductName = "Tournament Master 1.0", YearlyPrice = 9.99, ReleaseDate = DateTime.Now},
+                new Product { ProductId = 2, ProductCode = "WURE0115", ProductName = "League Scheduler 1.0", YearlyPrice = 50.98, ReleaseDate = DateTime.Now });
 
             modelBuilder.Entity<Technician>().HasData(
                 new Technician { TechnicianId = 1, Name = "Sarah Sami", Email= "Sarah.Sami@georgebrown.ca", Phone = "4168290752"},

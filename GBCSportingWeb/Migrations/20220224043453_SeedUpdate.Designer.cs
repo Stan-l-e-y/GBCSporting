@@ -4,6 +4,7 @@ using GBCSportingWeb.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GBCSportingWeb.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220224043453_SeedUpdate")]
+    partial class SeedUpdate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1147,10 +1149,8 @@ namespace GBCSportingWeb.Migrations
                         {
                             IncidentId = 1,
                             CustomerId = 1,
-
-                            DateClosed = new DateTime(2022, 2, 24, 15, 0, 44, 150, DateTimeKind.Local).AddTicks(1639),
-                            DateOpened = new DateTime(2022, 2, 24, 15, 0, 44, 150, DateTimeKind.Local).AddTicks(1638),
-
+                            DateClosed = new DateTime(2022, 2, 23, 23, 34, 52, 918, DateTimeKind.Local).AddTicks(9212),
+                            DateOpened = new DateTime(2022, 2, 23, 23, 34, 52, 918, DateTimeKind.Local).AddTicks(9208),
                             ProductId = 1,
                             TechnicianId = 1,
                             Title = "Problem!!"
@@ -1159,10 +1159,8 @@ namespace GBCSportingWeb.Migrations
                         {
                             IncidentId = 2,
                             CustomerId = 2,
-
-                            DateClosed = new DateTime(2022, 2, 24, 15, 0, 44, 150, DateTimeKind.Local).AddTicks(1641),
-                            DateOpened = new DateTime(2022, 2, 24, 15, 0, 44, 150, DateTimeKind.Local).AddTicks(1640),
-
+                            DateClosed = new DateTime(2022, 2, 23, 23, 34, 52, 918, DateTimeKind.Local).AddTicks(9217),
+                            DateOpened = new DateTime(2022, 2, 23, 23, 34, 52, 918, DateTimeKind.Local).AddTicks(9215),
                             ProductId = 2,
                             TechnicianId = 2,
                             Title = "Another one!!!"
@@ -1177,15 +1175,11 @@ namespace GBCSportingWeb.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProductId"), 1L, 1);
 
-                    b.Property<string>("ProductCode")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("ProductName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("ReleaseDate")
+                    b.Property<DateTime>("ReleaseDate")
                         .HasColumnType("datetime2");
 
                     b.Property<double?>("YearlyPrice")
@@ -1200,22 +1194,16 @@ namespace GBCSportingWeb.Migrations
                         new
                         {
                             ProductId = 1,
-
-                            ProductCode = "TPYR1090",
-                            ProductName = "Tournament Master 1.0",
-                            ReleaseDate = new DateTime(2022, 2, 24, 15, 0, 44, 150, DateTimeKind.Local).AddTicks(1603),
-                            YearlyPrice = 9.9900000000000002
-
+                            ProductName = "Thom",
+                            ReleaseDate = new DateTime(2022, 2, 23, 23, 34, 52, 918, DateTimeKind.Local).AddTicks(9132),
+                            YearlyPrice = 99.989999999999995
                         },
                         new
                         {
                             ProductId = 2,
-
-                            ProductCode = "WURE0115",
-                            ProductName = "League Scheduler 1.0",
-                            ReleaseDate = new DateTime(2022, 2, 24, 15, 0, 44, 150, DateTimeKind.Local).AddTicks(1613),
-                            YearlyPrice = 50.979999999999997
-
+                            ProductName = "Edward",
+                            ReleaseDate = new DateTime(2022, 2, 23, 23, 34, 52, 918, DateTimeKind.Local).AddTicks(9164),
+                            YearlyPrice = 115.98
                         });
                 });
 
