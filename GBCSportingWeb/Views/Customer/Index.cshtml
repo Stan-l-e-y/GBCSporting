@@ -32,7 +32,7 @@
                         <th>@customer.FirstName @customer.LastName</th>
                         <td>@customer.Email</td>
                         <td>@customer.City</td>
-                        <td><a asp-controller="Customer" asp-action="Edit"><i class="fa-solid fa-pen-to-square"></i></a></td>
+                        <td><a asp-controller="Customer" asp-action="Edit" asp-route-id="@customer.CustomerId"><i class="fa-solid fa-pen-to-square"></i></a></td>
                         <td >
                         <i x-on:click="toggle()" class="deleteId  fa-solid fa-trash-can hover:cursor-pointer" data-id="@customer.CustomerId" >
                         </i>
