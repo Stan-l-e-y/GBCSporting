@@ -29,7 +29,7 @@ namespace GBCSportingWeb.Models
         [Display(Name = "Date Opened"), DataType(DataType.Date)]
         public DateTime? DateOpened { get; set; }
 
-        [Display(Name = "Date Opened"), DataType(DataType.Date)]
+        [Display(Name = "Date Closed"), DataType(DataType.Date)]
         public DateTime? DateClosed { get; set; }
     }
 }

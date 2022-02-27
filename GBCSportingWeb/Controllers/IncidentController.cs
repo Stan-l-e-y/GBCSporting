@@ -55,6 +55,11 @@ namespace GBCSportingWeb.Controllers
             {
                 if(incident.IncidentId == 0)
                 {
+                    if(incident.DateOpened == null)
+                    {
+                        incident.DateOpened = DateTime.Now;
+                    }
+
                     context.Incidents.Add(incident);
                     context.SaveChanges();
                 }
