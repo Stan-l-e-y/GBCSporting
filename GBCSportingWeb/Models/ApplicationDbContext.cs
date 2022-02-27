@@ -21,6 +21,7 @@ namespace GBCSportingWeb.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
             modelBuilder.Entity<Country>().HasData(
                 new Country { CountryId = 1, Name = "Afghanistan" },
                 new Country { CountryId = 2, Name = "Albania" },
