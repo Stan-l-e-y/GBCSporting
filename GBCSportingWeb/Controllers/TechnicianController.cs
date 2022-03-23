@@ -65,6 +65,7 @@ namespace GBCSportingWeb.Controllers
             context.SaveChanges();
             return RedirectToAction("Index");
         }
+
     }
 
 }
