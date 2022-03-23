@@ -1147,8 +1147,8 @@ namespace GBCSportingWeb.Migrations
                         {
                             IncidentId = 1,
                             CustomerId = 1,
-                            DateClosed = new DateTime(2022, 2, 27, 8, 34, 41, 73, DateTimeKind.Local).AddTicks(5283),
-                            DateOpened = new DateTime(2022, 2, 27, 8, 34, 41, 73, DateTimeKind.Local).AddTicks(5282),
+                            DateClosed = new DateTime(2022, 3, 21, 20, 51, 58, 746, DateTimeKind.Local).AddTicks(9128),
+                            DateOpened = new DateTime(2022, 3, 21, 20, 51, 58, 746, DateTimeKind.Local).AddTicks(9127),
                             ProductId = 1,
                             TechnicianId = 1,
                             Title = "Problem!!"
@@ -1157,8 +1157,8 @@ namespace GBCSportingWeb.Migrations
                         {
                             IncidentId = 2,
                             CustomerId = 2,
-                            DateClosed = new DateTime(2022, 2, 27, 8, 34, 41, 73, DateTimeKind.Local).AddTicks(5286),
-                            DateOpened = new DateTime(2022, 2, 27, 8, 34, 41, 73, DateTimeKind.Local).AddTicks(5285),
+                            DateClosed = new DateTime(2022, 3, 21, 20, 51, 58, 746, DateTimeKind.Local).AddTicks(9132),
+                            DateOpened = new DateTime(2022, 3, 21, 20, 51, 58, 746, DateTimeKind.Local).AddTicks(9130),
                             ProductId = 2,
                             TechnicianId = 2,
                             Title = "Another one!!!"
@@ -1198,7 +1198,7 @@ namespace GBCSportingWeb.Migrations
                             ProductId = 1,
                             ProductCode = "TPYR1090",
                             ProductName = "Tournament Master 1.0",
-                            ReleaseDate = new DateTime(2022, 2, 27, 8, 34, 41, 73, DateTimeKind.Local).AddTicks(5258),
+                            ReleaseDate = new DateTime(2022, 3, 21, 20, 51, 58, 746, DateTimeKind.Local).AddTicks(9100),
                             YearlyPrice = 9.9900000000000002
                         },
                         new
@@ -1206,7 +1206,7 @@ namespace GBCSportingWeb.Migrations
                             ProductId = 2,
                             ProductCode = "WURE0115",
                             ProductName = "League Scheduler 1.0",
-                            ReleaseDate = new DateTime(2022, 2, 27, 8, 34, 41, 73, DateTimeKind.Local).AddTicks(5261),
+                            ReleaseDate = new DateTime(2022, 3, 21, 20, 51, 58, 746, DateTimeKind.Local).AddTicks(9103),
                             YearlyPrice = 50.979999999999997
                         });
                 });

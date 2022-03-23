@@ -1,0 +1,54 @@
+﻿@model List<Incident>
+@using Microsoft.AspNetCore.Http
+
+
+
+
+<div class="card flex justify-center items-center mt-36 ">
+
+    <div class="mb-20">
+        <h1 class=" text-4xl ">Incidents By Technician
+        </h1>
+    </div>
+    <div>@Context.Session.GetInt32("TechId")</div>
+        @if (Model.Count != 0)
+        {
+            <div class="w-7/12 overflow-x-auto sm:overflow-auto  ">
+                <table class="table w-full table-zebra">
+                    <thead>
+                        <tr >
+                            <th class="bg-primary  border-r-2 border-gray-700">Title</th>
+                            <th class="bg-primary border-r-2 border-gray-700">Customer</th>
+                            <th class="bg-primary border-r-2 border-gray-700">Product</th>
+                            <th class="bg-primary">Date Opened</th>
+                            <th class="bg-primary"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var incident in Model)
+                        {
+                            <tr>
+                                <th>@incident.Title</th>
+                                <td>@incident.Customer.FirstName</td>
+                                <td>@incident.Product.ProductName</td>
+                                <td>@incident.DateOpened</td>   
+                                <td><a asp-controller="Incident" asp-action="Edit" asp-route-id="@incident.IncidentId" ><i class="fa-solid fa-pen-to-square"></i></a></td>
+                            </tr>
+                        }         
+
+                    </tbody>
+                </table>
+
+        
+                <a asp-controller="TechIncident" asp-action="ShowTechnicians" class="btn btn-primary mt-10" >Switch Technician</a>
+            </div>
+            }
+        else
+            {
+                <div class="text-4xl text-red-400">There are no open Incidents assigned to this Technician</div>
+                <a asp-controller="TechIncident" asp-action="ShowTechnicians" class="btn btn-primary mt-10" >Switch Technician</a>
+            }
+
+
+    
+</div>
