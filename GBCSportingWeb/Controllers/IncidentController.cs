@@ -1,6 +1,8 @@
 ﻿using GBCSportingWeb.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Http;
+
 
 namespace GBCSportingWeb.Controllers
 {
@@ -89,5 +91,6 @@ namespace GBCSportingWeb.Controllers
             context.SaveChanges();
             return RedirectToAction("Index");
         }
+
     }
 }
