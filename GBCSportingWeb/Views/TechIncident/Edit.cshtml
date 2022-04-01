@@ -1,0 +1,68 @@
+﻿@model Incident
+
+
+
+<div class="flex flex-col justify-center items-center mt-36 mb-10">
+    <h1 class="mb-20 text-4xl">Edit Incident</h1>
+    <div class="bg-neutral sm:w-6/12 md:w-4/12  pt-10 pb-10 rounded-lg ">
+
+        <div class=" ml-5 ">
+
+            <form asp-action="Edit" method="post">
+                <div asp-validation-summary="All" ></div>
+
+                <div class="mt-5 flex ">
+                    <h2>Technician: </h2>
+                    <h2  class="ml-8">@ViewBag.TechnicianName</h2>
+                </div>
+
+                <div class="mt-5 flex ">
+                    <h2>Customer: </h2>
+                    <h2 class="ml-10">@ViewBag.CustomerName</h2>
+                </div>
+
+                <div class="mt-5 flex ">
+                    <h2>Product: </h2>
+                    <h2 class="ml-12 pl-1.5">@ViewBag.ProductName</h2>
+                </div>
+
+
+                <div class="mt-5 flex">
+                    <h2>Title: </h2>
+                    <h2 class="ml-8">@ViewBag.Title</h2>
+                </div>
+
+                <div class="mt-5 flex">
+                    <h2>Date Opened: </h2>
+                    <h2 class="ml-8">@ViewBag.DateOpened</h2>
+                </div>
+
+                <div class="mt-5">
+                    <label asp-for="Description" class="label">
+                        <span class="label-text">Description</span>
+                    </label>
+                    <input asp-for="Description" type="text" placeholder="Type here" class="input w-6/12 ">
+                </div>            
+
+
+                <div>
+                    <label asp-for="DateClosed" class="label mt-5">
+                        <span class="label-text">Date Closed</span>
+                    </label>
+                    <input class="rounded-lg p-2 input w-6/12" type="date" asp-for="DateClosed" />
+                </div>
+
+                <input type="hidden" asp-for="IncidentId"/>
+                <input type="hidden" asp-for="ProductId"/>
+                <input type="hidden" asp-for="CustomerId"/>
+                <input type="hidden" asp-for="TechnicianId"/>
+                <input type="hidden" asp-for="Title"/>
+
+
+                <button  class="btn btn-primary mt-5">Save</button>
+                <a asp-controller="TechIncident" asp-action="Cancel" class="btn btn-outline btn-error" >Cancel</a>
+            </form>
+         </div>
+    </div>
+</div>
+

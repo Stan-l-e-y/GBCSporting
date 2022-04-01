@@ -18,5 +18,7 @@ namespace GBCSportingWeb.Models
         public double? YearlyPrice { get; set; }
 
         public DateTime? ReleaseDate { get; set; } = DateTime.Now;
+
+        public List<Registration>? Regstrations { get; set; }  
     }
 }

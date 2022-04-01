@@ -1,13 +1,13 @@
-﻿@model Technician
+﻿@model Customer
 @{
 }
 <div class="flex flex-col justify-center items-center mt-36">
-    <h1 class="mb-20 text-4xl">Choose a Technician</h1>
+    <h1 class="mb-20 text-4xl">Choose a Customer</h1>
     <div class="bg-neutral w-3/12  pt-10 pb-10 rounded-lg ">
 
         <div class=" ml-5 ">
 
-            <form asp-controller="TechIncident" asp-action="IncidentsByTechnician" method="post">
+            <form asp-controller="Registration" asp-action="RegistrationsByCustomer" method="post">
                 <div asp-validation-summary="All" ></div>
                     
                 @if (TempData.Keys.Contains("Error"))
@@ -17,21 +17,19 @@
                     }
                
                 <div class="mt-5">
-                    <label asp-for="TechnicianId" class="label">
-                        <span class="label-text">Technician</span>
+                    <label asp-for="CustomerId" class="label">
+                        <span class="label-text">Customer</span>
                     </label>
-                    <select asp-for="TechnicianId" class="select w-9/12">
-                        <option disabled selected>Choose a Technician</option>
-                        @foreach(Technician t in ViewBag.Technicians)
+                    <select asp-for="CustomerId" class="select w-9/12">
+                        <option disabled selected>Choose a Customer</option>
+                        @foreach(Customer c in ViewBag.Customers)
                         {
-                            <option value="@t.TechnicianId">@t.Name</option>
+                            <option value="@c.CustomerId">@c.FirstName @c.LastName</option>
                         }
-                    </select>
+                    </select>                   
                     
                 </div>
-               
-
-
+                
 
                 <button  class="btn btn-primary mt-5">Select</button>
 

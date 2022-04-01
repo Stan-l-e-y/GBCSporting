@@ -1,5 +1,6 @@
 ﻿using GBCSportingWeb.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 
 namespace GBCSportingWeb.Controllers
 {
@@ -11,10 +12,6 @@ namespace GBCSportingWeb.Controllers
         public TechIncidentController(ApplicationDbContext ctx)
         {
             context = ctx;
-        }
-        public IActionResult Index()
-        {
-            return View();
         }
 
         [HttpGet]
@@ -47,6 +44,45 @@ namespace GBCSportingWeb.Controllers
 
             return View("IncidentsByTechnician", incidents);
 
+        }
+
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            var incident = context.Incidents.Find(id);
+            ViewBag.CustomerName = context.Customers.Find(incident.CustomerId).FirstName;
+            ViewBag.CustomerName += " " + context.Customers.Find(incident.CustomerId).LastName;
+            ViewBag.TechnicianName = context.Technicians.Find(incident.TechnicianId).Name;
+            ViewBag.ProductName = context.Products.Find(incident.ProductId).ProductName;
+            ViewBag.Title = incident.Title;            
+            ViewBag.DateOpened = incident.DateOpened;
+            return View(incident);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Incident incident)
+        {
+            if (ModelState.IsValid)
+            {
+                
+                context.Incidents.Update(incident);
+                context.SaveChanges();
+                int num = (int)HttpContext.Session.GetInt32("TechId");
+                var technician = context.Technicians.Find(num);
+                return IncidentsByTechnician(technician);
+            }
+            else
+            {
+                return Edit(incident.IncidentId);
+            }
+        }
+
+        [HttpGet]
+        public IActionResult Cancel()
+        {
+            int num = (int)HttpContext.Session.GetInt32("TechId");
+            var technician = context.Technicians.Find(num);
+            return IncidentsByTechnician(technician);
         }
     }
 }

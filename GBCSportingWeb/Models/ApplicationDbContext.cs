@@ -19,6 +19,8 @@ namespace GBCSportingWeb.Models
 
         public DbSet<Technician> Technicians { get; set; }
 
+        public DbSet<Registration> Registrations { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 
@@ -236,7 +238,23 @@ namespace GBCSportingWeb.Models
                 new Incident { IncidentId = 1, CustomerId = 1, ProductId = 1, TechnicianId = 1, Title = "Problem!!", DateOpened = DateTime.Now, DateClosed = DateTime.Now },
                 new Incident { IncidentId = 2, CustomerId = 2, ProductId = 2, TechnicianId = 2, Title = "Another one!!!", DateOpened = DateTime.Now, DateClosed = DateTime.Now });
 
-            
+            modelBuilder.Entity<Registration>()
+            .HasOne(pd => pd.Product)
+            .WithMany(r => r.Regstrations)
+            .HasForeignKey(pd => pd.ProductId);
+
+            modelBuilder.Entity<Registration>()
+            .HasOne(cs => cs.Customer)
+            .WithMany(r => r.Regstrations)
+            .HasForeignKey(cs => cs.CustomerId);
+
+            modelBuilder.Entity<Registration>().HasData(
+                new Registration { Id = 1, CustomerId = 1, ProductId = 1 });
+            modelBuilder.Entity<Registration>().HasData(
+                new Registration { Id = 2, CustomerId = 2, ProductId = 1 });
+            modelBuilder.Entity<Registration>().HasData(
+                new Registration { Id = 3, CustomerId = 2, ProductId = 2 });
         }
+
     }
 }

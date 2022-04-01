@@ -1,0 +1,122 @@
+﻿@model Registration
+@using Microsoft.AspNetCore.Http
+
+@{
+    string name = Context.Session.GetString("CustomerName");
+}
+
+<div class="card flex justify-center items-center mt-36 " x-data="{
+            open: false,
+            toggle() {
+                this.open = this.open ? this.close() : true
+            },
+            id: 0,
+            close(){
+                this.open = false
+            }
+        }">
+
+    <div class="mb-10">
+        <h1 class=" text-4xl "> Customer: @name 
+        </h1>
+        
+    </div>
+
+        @if (ViewBag.Registrations.Count != 0)
+        {
+            <div class="w-7/12 overflow-x-auto sm:overflow-auto mb-10 ">
+                <h1 class=" text-4xl mb-10"> Registrations 
+        </h1>
+                <table class="table w-full table-zebra">
+                    <thead>
+                        <tr >
+                            <th class="bg-primary  border-r-2 border-gray-700">Product</th>
+                            <th class="bg-primary "></th>
+                            <th class="bg-primary"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (Registration r in ViewBag.Registrations)
+                        {
+                            <tr>
+                                <th>@r.Product.ProductName</th>
+                                <td></td>
+                                <td><i x-on:click="toggle()" class="deleteId  fa-solid fa-trash-can hover:cursor-pointer" data-id="@r.Id" ></i></td>
+                            </tr>
+                        }         
+
+                    </tbody>
+                </table>
+
+        
+                <a asp-controller="Registration" asp-action="ShowCustomers" class="btn btn-primary mt-10" >Switch Customer</a>
+            </div>
+            }
+        else
+            {
+                <div class="text-4xl text-red-400">There are no registered products to this customer </div>
+                @*<a asp-controller="Registration" asp-action="ShowCustomers" class="btn btn-primary mt-10" >Switch Technician</a>*@
+            }
+
+            @if (TempData.Keys.Contains("Error"))
+                    {
+                        <span class="text-red-400">@TempData["Error"]</span>
+               
+                    }
+
+        <div class="w-7/12 overflow-x-auto sm:overflow-auto mb-10  ">
+            <form asp-controller="Registration" asp-action="Register" method="post">
+                <div class="mt-5">
+                    <label asp-for="ProductId" class="label ">
+                        <span class="label-text text-4xl">Product</span>
+                    </label>
+                    <select asp-for="ProductId" class="select w-9/12 bg-neutral">
+                        <option disabled selected>Choose a Product</option>
+                        @foreach(Product p in ViewBag.Products)
+                        {
+                            <option value="@p.ProductId">@p.ProductName</option>
+                        }
+                    </select>
+                    <input type="hidden" asp-for="CustomerId" value="@ViewData["id"]"/>
+                </div>
+                <button  class="btn btn-primary mt-5">Register</button>
+            </form>
+            </div>
+        <div class="flex flex-col justify-center items-center">
+            <div class="absolute card w-96 glass  z-10 top-0 "  x-show="open">
+                <div class="card-body">
+                    <h2 class="card-title">Confirm Delete</h2>
+                    <p>Are you sure you want to delete this entry?</p>
+                    <div class="flex mt-10">
+                        <a id="selectedId"  href="/registration/delete/" class="btn bg-blue-600 btn-primary mr-3" >Delete</a>
+                        <button x-on:click="toggle()" class="btn btn-error">No</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    
+</div>
+
+<script type="text/javascript">
+    (function () {
+        var deleteBtns = document.querySelectorAll('.deleteId');
+        deleteBtns.forEach(btn => {
+            btn.addEventListener('click', getSelectedId);
+        });
+    })();
+
+    function getSelectedId() {
+        var id = this.getAttribute("data-id");
+
+        document.getElementById("selectedId").setAttribute('href', '/registration/delete/' + id);
+
+    }
+
+    window.onbeforeunload = function () {
+        var deleteBtns = document.querySelectorAll('.deleteId');
+        deleteBtns.forEach(btn => {
+            btn.removeEventListener('click', getSelectedId);
+        });
+    }
+</script>
