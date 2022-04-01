@@ -26,5 +26,7 @@ namespace GBCSportingWeb.Models
         public string? Phone { get; set; }
         public string? Email { get; set; }
 
+        public List<Registration>? Regstrations { get; set; }
+
     }
 }

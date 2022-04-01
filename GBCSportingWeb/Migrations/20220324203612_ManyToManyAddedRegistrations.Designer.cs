@@ -4,6 +4,7 @@ using GBCSportingWeb.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GBCSportingWeb.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220324203612_ManyToManyAddedRegistrations")]
+    partial class ManyToManyAddedRegistrations
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1147,8 +1149,8 @@ namespace GBCSportingWeb.Migrations
                         {
                             IncidentId = 1,
                             CustomerId = 1,
-                            DateClosed = new DateTime(2022, 3, 24, 18, 10, 53, 310, DateTimeKind.Local).AddTicks(2462),
-                            DateOpened = new DateTime(2022, 3, 24, 18, 10, 53, 310, DateTimeKind.Local).AddTicks(2461),
+                            DateClosed = new DateTime(2022, 3, 24, 16, 36, 11, 944, DateTimeKind.Local).AddTicks(6424),
+                            DateOpened = new DateTime(2022, 3, 24, 16, 36, 11, 944, DateTimeKind.Local).AddTicks(6422),
                             ProductId = 1,
                             TechnicianId = 1,
                             Title = "Problem!!"
@@ -1157,8 +1159,8 @@ namespace GBCSportingWeb.Migrations
                         {
                             IncidentId = 2,
                             CustomerId = 2,
-                            DateClosed = new DateTime(2022, 3, 24, 18, 10, 53, 310, DateTimeKind.Local).AddTicks(2466),
-                            DateOpened = new DateTime(2022, 3, 24, 18, 10, 53, 310, DateTimeKind.Local).AddTicks(2465),
+                            DateClosed = new DateTime(2022, 3, 24, 16, 36, 11, 944, DateTimeKind.Local).AddTicks(6428),
+                            DateOpened = new DateTime(2022, 3, 24, 16, 36, 11, 944, DateTimeKind.Local).AddTicks(6427),
                             ProductId = 2,
                             TechnicianId = 2,
                             Title = "Another one!!!"
@@ -1198,7 +1200,7 @@ namespace GBCSportingWeb.Migrations
                             ProductId = 1,
                             ProductCode = "TPYR1090",
                             ProductName = "Tournament Master 1.0",
-                            ReleaseDate = new DateTime(2022, 3, 24, 18, 10, 53, 310, DateTimeKind.Local).AddTicks(2433),
+                            ReleaseDate = new DateTime(2022, 3, 24, 16, 36, 11, 944, DateTimeKind.Local).AddTicks(6376),
                             YearlyPrice = 9.9900000000000002
                         },
                         new
@@ -1206,7 +1208,7 @@ namespace GBCSportingWeb.Migrations
                             ProductId = 2,
                             ProductCode = "WURE0115",
                             ProductName = "League Scheduler 1.0",
-                            ReleaseDate = new DateTime(2022, 3, 24, 18, 10, 53, 310, DateTimeKind.Local).AddTicks(2437),
+                            ReleaseDate = new DateTime(2022, 3, 24, 16, 36, 11, 944, DateTimeKind.Local).AddTicks(6379),
                             YearlyPrice = 50.979999999999997
                         });
                 });
@@ -1232,26 +1234,6 @@ namespace GBCSportingWeb.Migrations
                     b.HasIndex("ProductId");
 
                     b.ToTable("Registrations");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CustomerId = 1,
-                            ProductId = 1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            CustomerId = 2,
-                            ProductId = 1
-                        },
-                        new
-                        {
-                            Id = 3,
-                            CustomerId = 2,
-                            ProductId = 2
-                        });
                 });
 
             modelBuilder.Entity("GBCSportingWeb.Models.Technician", b =>
