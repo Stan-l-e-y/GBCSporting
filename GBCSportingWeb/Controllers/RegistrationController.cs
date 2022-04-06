@@ -19,6 +19,7 @@ namespace GBCSportingWeb.Controllers
         {
             ViewBag.Customers = context.Customers.OrderBy(c => c.CustomerId).ToList();
 
+            //Sets a session cookie for storing the active nav link
             HttpContext.Session.SetString("Active", "Registrations");
 
             return View("Customers");
@@ -39,15 +40,13 @@ namespace GBCSportingWeb.Controllers
 
             string name = cus.FirstName + " " + cus.LastName;
 
+            ////Sets a session cookie for storing the customer so that on redirect back, the customer info is saved
             HttpContext.Session.SetInt32("CustomerId", id);
             HttpContext.Session.SetString("CustomerName", name);
             ViewData["id"] = HttpContext.Session.GetInt32("CustomerId");
 
             ViewBag.Products = context.Products.OrderBy(p => p.ProductId).ToList();
-            ViewBag.Registrations = context.Registrations.Where(c => c.CustomerId == customer.CustomerId).Include(p => p.Product).ToList();
-            //var reg = context.Registrations.Where(c => c.CustomerId == customer.CustomerId).Include(p => p.Product).ToList();
-
-
+            ViewBag.Registrations = context.Registrations.Where(c => c.CustomerId == customer.CustomerId).Include(p => p.Product).ToList();         
 
             return View("Registrations");
         }
@@ -55,6 +54,7 @@ namespace GBCSportingWeb.Controllers
         [HttpPost]
         public IActionResult Register(Registration registration)
         {
+            //Gets the customerId from the session cookie stored earlier
             int customerId = (int)HttpContext.Session.GetInt32("CustomerId");
 
             var cus = context.Customers.Find(customerId);

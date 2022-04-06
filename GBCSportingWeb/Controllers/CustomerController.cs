@@ -19,6 +19,7 @@ namespace GBCSportingWeb.Controllers
                             .OrderBy(c => c.FirstName).ThenBy(c => c.LastName)
                             .ToList();
 
+            //Sets a session cookie for storing the active nav link
             HttpContext.Session.SetString("Active", "Customers");
 
             return View(customers);
@@ -30,8 +31,6 @@ namespace GBCSportingWeb.Controllers
             var countries = context.Countries.OrderBy(c => c.CountryId).ToList();
 
             ViewBag.Countries = countries;
-
-
 
             return View("Edit", new Customer());
         }

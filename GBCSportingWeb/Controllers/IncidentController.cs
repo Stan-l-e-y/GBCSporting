@@ -18,6 +18,7 @@ namespace GBCSportingWeb.Controllers
 
         public IActionResult Index(string filter = "all")
         {
+            //Instantiates a viewlistmodel and populates the lists from the db context
             var data = new IncidentListViewModel
             {
                 IncidentFilter = filter,
@@ -27,6 +28,7 @@ namespace GBCSportingWeb.Controllers
                 Customers = context.Customers.ToList(),
             };
 
+            //Adds a query to the incidents list if a filter was passed to the index method. 
             IQueryable<Incident> query = context.Incidents;
             if(filter == "open")
             {
@@ -43,6 +45,7 @@ namespace GBCSportingWeb.Controllers
 
             data.Incidents = query.ToList();
 
+            //Sets a session cookie for storing the active nav link
             HttpContext.Session.SetString("Active", "Incidents");
 
             return View(data);
@@ -82,10 +85,12 @@ namespace GBCSportingWeb.Controllers
         [HttpPost]
         public IActionResult Edit(IncidentListViewModel incidentListView)
         {
+
             if (ModelState.IsValid)
             {
                 if(incidentListView.Incident.IncidentId == 0)
                 {
+                    //If no dateOpened was specified in the form, a datetime of Now is added
                     if(incidentListView.Incident.DateOpened == null)
                     {
                         incidentListView.Incident.DateOpened = DateTime.Now;
