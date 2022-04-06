@@ -15,6 +15,7 @@ namespace GBCSportingWeb.Controllers
 
         public IActionResult Index()
         {
+            //Sets a session cookie for storing the active nav link
             HttpContext.Session.SetString("Active", "Home");
             return View();
         }
@@ -26,6 +27,7 @@ namespace GBCSportingWeb.Controllers
 
         public IActionResult About()
         {
+            //Sets a session cookie for storing the active nav link
             HttpContext.Session.SetString("Active", "About");
             return View();
         } 

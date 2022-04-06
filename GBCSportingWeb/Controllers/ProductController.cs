@@ -18,6 +18,7 @@ namespace GBCSportingWeb.Controllers
                 .OrderBy(p => p.ProductName)
                 .ToList();
 
+            //Sets a session cookie for storing the active nav link
             HttpContext.Session.SetString("Active", "Products");
 
             return View(products);
@@ -44,6 +45,7 @@ namespace GBCSportingWeb.Controllers
         {
             if (ModelState.IsValid)
             {
+                //Using TempData to store a success message 
                 if (product.ProductId == 0)
                 {
                     context.Products.Add(product);

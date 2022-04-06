@@ -17,6 +17,7 @@ namespace GBCSportingWeb.Controllers
                             .OrderBy(t => t.Name)
                             .ToList();
 
+            //Sets a session cookie for storing the active nav link
             HttpContext.Session.SetString("Active", "Technicians");
 
             return View(Technicians);
