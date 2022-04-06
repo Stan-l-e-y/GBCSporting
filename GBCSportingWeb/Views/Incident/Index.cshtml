@@ -1,5 +1,5 @@
 ﻿
-@model List<Incident>
+@model IncidentListViewModel
 
     @{
     ViewBag.Title = "Incidents";
@@ -26,6 +26,11 @@
                 this.open = false
             }
         }">
+        <div class="mb-5 flex space-x-5">
+            <a asp-controller="Incident" asp-action="Index" class="@(@Model.IncidentFilter == "all" ?  "btn btn-primary" : "btn" )" >All incidents </a>
+            <a asp-controller="Incident" asp-action="Index" asp-route-filter="unassigned" class="@(@Model.IncidentFilter == "unassigned" ?  "btn btn-primary" : "btn" )" >Unassigned incidents</a>
+            <a asp-controller="Incident" asp-action="Index" asp-route-filter="open" class="@(@Model.IncidentFilter == "open" ?  "btn btn-primary" : "btn" )" >Open incidents</a>
+        </div>
         <table class="table w-full table-zebra">
             <thead>
                 <tr >
@@ -38,7 +43,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var incident in Model)
+                @foreach (var incident in Model.Incidents)
                 {
                     <tr>
                     <th>@incident.Title</th>
@@ -79,25 +84,27 @@
 
 
 <script type="text/javascript">
-    (function () {
-        var deleteBtns = document.querySelectorAll('.deleteId');
-        deleteBtns.forEach(btn => {
-            btn.addEventListener('click', getSelectedId);
-        });
-    })();
 
-    function getSelectedId() {
-        var id = this.getAttribute("data-id");
+        function () {
+            var deleteBtns = document.querySelectorAll('.deleteId');
+            deleteBtns.forEach(btn => {
+                btn.addEventListener('click', getSelectedId);
+            });
+        })();
 
-        document.getElementById("selectedId").setAttribute('href', '/incident/delete/' + id);
+        function getSelectedId() {
+            var id = this.getAttribute("data-id");
 
-    }
+            document.getElementById("selectedId").setAttribute('href', '/incident/delete/' + id);
 
-    window.onbeforeunload = function () {
-        var deleteBtns = document.querySelectorAll('.deleteId');
-        deleteBtns.forEach(btn => {
-            btn.removeEventListener('click', getSelectedId);
-        });
-    }
+        }
+
+        window.onbeforeunload = function () {
+            var deleteBtns = document.querySelectorAll('.deleteId');
+            deleteBtns.forEach(btn => {
+                btn.removeEventListener('click', getSelectedId);
+            });
+        }
+    
 </script>
 

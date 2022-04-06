@@ -12,24 +12,26 @@ namespace GBCSportingWeb.Controllers
             context = ctx;
         }
 
-        public IActionResult Index()
+        public ViewResult Index()
         {
             var products = context.Products
                 .OrderBy(p => p.ProductName)
                 .ToList();
 
+            HttpContext.Session.SetString("Active", "Products");
+
             return View(products);
         }
 
         [HttpGet]
-        public IActionResult Create()
+        public ViewResult Create()
         {
             ViewBag.Action = "Add";
             return View("Edit", new Product());
         }
 
         [HttpGet]
-        public IActionResult Edit(int id)
+        public ViewResult Edit(int id)
         {
             ViewBag.Action = "Edit";
 
@@ -45,11 +47,13 @@ namespace GBCSportingWeb.Controllers
                 if (product.ProductId == 0)
                 {
                     context.Products.Add(product);
+                    TempData["message"] = $"{product.ProductName} was added.";
                 }
                 else
                 {
                     context.Products.Update(product);
-                    
+                    TempData["message"] = $"{product.ProductName} was succefully updated.";
+
                 }
                 context.SaveChanges();
                 return RedirectToAction("Index", "Product");
@@ -62,11 +66,12 @@ namespace GBCSportingWeb.Controllers
         }
 
         [HttpGet]
-        public IActionResult Delete(int id)
+        public RedirectToActionResult Delete(int id)
         {
             var product = context.Products.Find(id);
             context.Products.Remove(product);
             context.SaveChanges();
+            TempData["message"] = $"{product.ProductName} was deleted.";
             return RedirectToAction("Index");
         }
     }

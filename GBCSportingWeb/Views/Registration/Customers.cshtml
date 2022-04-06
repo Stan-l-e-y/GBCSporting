@@ -20,13 +20,10 @@
                     <label asp-for="CustomerId" class="label">
                         <span class="label-text">Customer</span>
                     </label>
-                    <select asp-for="CustomerId" class="select w-9/12">
+                   
+                     <select asp-for="CustomerId" asp-items='new SelectList(ViewBag.Customers,"CustomerId","FirstName")' class="select w-9/12">
                         <option disabled selected>Choose a Customer</option>
-                        @foreach(Customer c in ViewBag.Customers)
-                        {
-                            <option value="@c.CustomerId">@c.FirstName @c.LastName</option>
-                        }
-                    </select>                   
+                    </select>
                     
                 </div>
                 

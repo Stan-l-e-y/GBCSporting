@@ -17,6 +17,10 @@
     @*<link rel="stylesheet" href="~/GBCSportingWeb.styles.css" asp-append-version="true" />*@
 </head>
 
+@{
+    string active = Context.Session.GetString("Active");
+}
+
 <body>
     <div class="navbar mb-2 shadow-lg bg-neutral text-neutral-content rounded-box overflow-x-auto sm:overflow-auto">
         <div class="px-2 mx-2 navbar-start">
@@ -29,25 +33,25 @@
         </div>
         <div class=" px-2 mx-2 navbar-center lg:flex">
             <div class="flex items-stretch">
-                <a class="btn btn-ghost btn-sm rounded-btn" asp-controller="Home" asp-action="Index">
+                <a class="@(active == "Home" ?  "btn btn-ghost btn-sm rounded-btn btn-active" : "btn btn-ghost btn-sm rounded-btn" )" asp-controller="Home" asp-action="Index">
                     Home
                 </a>
-                <a class="btn btn-ghost btn-sm rounded-btn" asp-controller="Product" asp-action="Index">
+                <a class="@(active == "Products" ?  "btn btn-ghost btn-sm rounded-btn btn-active" : "btn btn-ghost btn-sm rounded-btn" )"  asp-controller="Product" asp-action="Index">
                     Products
                 </a>
-                <a class="btn btn-ghost btn-sm rounded-btn" asp-controller="Technician" asp-action="Index">
+                <a class="@(active == "Technicians" ?  "btn btn-ghost btn-sm rounded-btn btn-active" : "btn btn-ghost btn-sm rounded-btn" )" asp-controller="Technician" asp-action="Index">
                     Technicians
                 </a>
-                <a class="btn btn-ghost btn-sm rounded-btn" asp-controller="Customer" asp-action="Index">
+                <a class="@(active == "Customers" ?  "btn btn-ghost btn-sm rounded-btn btn-active" : "btn btn-ghost btn-sm rounded-btn" )" asp-controller="Customer" asp-action="Index">
                     Customers
                 </a>
-                <a class="btn btn-ghost btn-sm rounded-btn" asp-controller="Incident" asp-action="Index">
+                <a class="@(active == "Incidents" ?  "btn btn-ghost btn-sm rounded-btn btn-active" : "btn btn-ghost btn-sm rounded-btn" )" asp-controller="Incident" asp-action="Index">
                     Incidents
                 </a>
-                <a class="btn btn-ghost btn-sm rounded-btn " asp-controller="Registration" asp-action="ShowCustomers">
+                <a class="@(active == "Registrations" ?  "btn btn-ghost btn-sm rounded-btn btn-active" : "btn btn-ghost btn-sm rounded-btn" )" asp-controller="Registration" asp-action="ShowCustomers">
                     Registrations
                 </a>
-                <a class="btn btn-ghost btn-sm rounded-btn" asp-controller="Home" asp-action="About">
+                <a class="@(active == "About" ?  "btn btn-ghost btn-sm rounded-btn btn-active" : "btn btn-ghost btn-sm rounded-btn" )" asp-controller="Home" asp-action="About">
                     About
                 </a>
             </div>

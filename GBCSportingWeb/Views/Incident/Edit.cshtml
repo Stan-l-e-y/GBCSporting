@@ -1,10 +1,10 @@
-﻿@model Incident
-@{
+﻿@model IncidentListViewModel
+@*@{
     string action = ViewBag.Action;
-}
+}*@
 
 <div class="flex flex-col justify-center items-center mt-36">
-    <h1 class="mb-20 text-4xl">@(action == "Add" ? "Add a new Incident" : "Edit the Incident")</h1>
+    <h1 class="mb-20 text-4xl">@(@Model.Operation == "add" ? "Add a new Incident" : "Edit the Incident")</h1>
     <div class="bg-neutral w-3/12  pt-10 pb-10 rounded-lg ">
 
         <div class=" ml-5 ">
@@ -12,76 +12,65 @@
             <form asp-action="Edit" method="post">
                 <div asp-validation-summary="All" ></div>
                 <div>
-                    <label asp-for="CustomerId" class="label">
+                    <label asp-for="Incident.CustomerId" class="label">
                         <span class="label-text">Customer</span>
                     </label>
-                    <select asp-for="CustomerId" class="select w-9/12">
+
+                    <select asp-for="Incident.CustomerId" asp-items='new SelectList(Model.Customers,"CustomerId","FirstName")' class="select w-9/12">
                         <option disabled selected>Choose a Customer</option>
-                        @foreach(Customer c in ViewBag.Customers)
-                        {
-                            <option value="@c.CustomerId">@c.FirstName</option>
-                        }
                     </select>
                 </div>
 
                 <div class="mt-5">
-                    <label asp-for="ProductId" class="label">
+                    <label asp-for="Incident.ProductId" class="label">
                         <span class="label-text">Product</span>
                     </label>
-                    <select asp-for="ProductId" class="select w-9/12">
-                        <option disabled selected>Choose a Product</option>
-                        @foreach(Product p in ViewBag.Products)
-                        {
-                            <option value="@p.ProductId">@p.ProductName</option>
-                        }
+                     <select asp-for="Incident.ProductId" asp-items='new SelectList(Model.Products,"ProductId","ProductName")' class="select w-9/12">
+                        <option disabled selected>Choose a Customer</option>
                     </select>
                 </div>
 
 
                 <div class="mt-5">
-                    <label asp-for="Title" class="label">
+                    <label asp-for="Incident.Title" class="label">
                         <span class="label-text">Title</span>
                     </label>
-                    <input asp-for="Title" type="text" placeholder="Type here" class="input w-9/12 ">
+                    <input asp-for="Incident.Title" type="text" placeholder="Type here" class="input w-9/12 ">
                 </div>
 
                 <div class="mt-5">
-                    <label asp-for="Description" class="label">
+                    <label asp-for="Incident.Description" class="label">
                         <span class="label-text">Description</span>
                     </label>
-                    <input asp-for="Description" type="text" placeholder="Type here" class="input w-9/12 ">
+                    <input asp-for="Incident.Description" type="text" placeholder="Type here" class="input w-9/12 ">
                 </div>
 
                 <div class="mt-5">
-                    <label asp-for="TechnicianId" class="label">
+                    <label asp-for="Incident.TechnicianId" class="label">
                         <span class="label-text">Technician</span>
                     </label>
-                    <select asp-for="TechnicianId" class="select w-9/12">
-                        <option disabled selected>Choose a Technician</option>
-                        @foreach(Technician t in ViewBag.Technicians)
-                        {
-                            <option value="@t.TechnicianId">@t.Name</option>
-                        }
+                    <select asp-for="Incident.TechnicianId" asp-items='new SelectList(Model.Technicians,"TechnicianId","Name")' class="select w-9/12">
+                        <option disabled selected>Choose a Customer</option>
                     </select>
                 </div>
 
                 <div>
-                    <label asp-for="DateOpened" class="label mt-5">
+                    <label asp-for="Incident.DateOpened" class="label mt-5">
                         <span class="label-text">Date Opened</span>
                     </label>
-                    <input class=" rounded-lg p-2 input w-6/12" type="date" asp-for="DateOpened" />
+                    <input class=" rounded-lg p-2 input w-6/12" type="date" asp-for="Incident.DateOpened" />
                 </div>
 
                 <div>
-                    <label asp-for="DateClosed" class="label mt-5">
+                    <label asp-for="Incident.DateClosed" class="label mt-5">
                         <span class="label-text">Date Closed</span>
                     </label>
-                    <input class="rounded-lg p-2 input w-6/12" type="date" asp-for="DateClosed" />
+                    <input class="rounded-lg p-2 input w-6/12" type="date" asp-for="Incident.DateClosed" />
                 </div>
 
-                <input type="hidden" asp-for="IncidentId"/>
+                <input type="hidden" asp-for="Incident.IncidentId"/>
 
-                <button  class="btn btn-primary mt-5">@(action == "Add" ? "Add" : "Update")</button>
+                <button  class="btn btn-primary mt-5">@(@Model.Operation == "Add" ? "Add" : "Update")</button>
                 <a asp-controller="Incident" asp-action="Index" class="btn btn-outline btn-error" >Cancel</a>
             </form>
          </div>

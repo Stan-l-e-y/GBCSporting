@@ -1,5 +1,7 @@
 ﻿using GBCSportingWeb.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace GBCSportingWeb.Controllers
 {
@@ -17,31 +19,66 @@ namespace GBCSportingWeb.Controllers
                             .OrderBy(c => c.FirstName).ThenBy(c => c.LastName)
                             .ToList();
 
+            HttpContext.Session.SetString("Active", "Customers");
+
             return View(customers);
         }
         [HttpGet]
         public IActionResult Create()
         {
             ViewBag.Action = "Add";
-            ViewBag.Countries = context.Countries.OrderBy(c => c.CountryId).ToList();
+            var countries = context.Countries.OrderBy(c => c.CountryId).ToList();
+
+            ViewBag.Countries = countries;
+
+
+
             return View("Edit", new Customer());
         }
         [HttpGet]
         public IActionResult Edit(int id)
         {
             ViewBag.Action = "Edit";
-            ViewBag.Countries = context.Countries.OrderBy(c => c.CountryId).ToList();
+            var countries = context.Countries.OrderBy(c => c.CountryId).ToList();
             var customer = context.Customers.Find(id);
+            ViewBag.Countries = countries;
             return View(customer);
         }
         [HttpPost]
         public IActionResult Edit(Customer customer)
         {
+            
+
             if (ModelState.IsValid)
             {
                 if (customer.CustomerId == 0)
                 {
-                    context.Customers.Add(customer);
+                    //The folllowing code checks if the email entered is already in the system
+
+                    string key = nameof(Customer.Email);
+
+                    if (ModelState.GetValidationState(key) == ModelValidationState.Valid)
+                    {
+                        var email = customer.Email;
+                        var customers = context.Customers.ToList();
+                        bool inSystem = false;
+                        foreach (var cus in customers)
+                        {
+                            if (email == cus.Email)
+                            {
+                                inSystem = true; break;
+                            }
+                        }
+                        if (inSystem)
+                        {
+                            ModelState.AddModelError(key, "Email is already in use.");
+                        }
+                        else
+                        {
+                            context.Customers.Add(customer);
+                        }
+                    }
+
                 }
                 else
                 {
