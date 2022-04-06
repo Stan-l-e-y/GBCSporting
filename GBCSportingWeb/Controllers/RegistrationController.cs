@@ -19,6 +19,8 @@ namespace GBCSportingWeb.Controllers
         {
             ViewBag.Customers = context.Customers.OrderBy(c => c.CustomerId).ToList();
 
+            HttpContext.Session.SetString("Active", "Registrations");
+
             return View("Customers");
         }
 

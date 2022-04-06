@@ -15,6 +15,7 @@ namespace GBCSportingWeb.Controllers
 
         public IActionResult Index()
         {
+            HttpContext.Session.SetString("Active", "Home");
             return View();
         }
 
@@ -25,6 +26,7 @@ namespace GBCSportingWeb.Controllers
 
         public IActionResult About()
         {
+            HttpContext.Session.SetString("Active", "About");
             return View();
         } 
 

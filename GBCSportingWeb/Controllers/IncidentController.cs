@@ -16,70 +16,103 @@ namespace GBCSportingWeb.Controllers
             context = ctx;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(string filter = "all")
         {
-            var incidents = context.Incidents
-                            .Include(i => i.Product)
-                            .Include(i => i.Customer)
-                            .Include(i => i.Technician)
-                            .OrderBy(i => i.DateOpened)
-                            .ToList();
+            var data = new IncidentListViewModel
+            {
+                IncidentFilter = filter,
+                Incidents = context.Incidents.ToList(),
+                Products = context.Products.ToList(),
+                Technicians = context.Technicians.ToList(),
+                Customers = context.Customers.ToList(),
+            };
 
-            return View(incidents);
+            IQueryable<Incident> query = context.Incidents;
+            if(filter == "open")
+            {
+                query = query.Where(
+                    i => i.DateClosed == null);
+                data.IncidentFilter = "open";
+            }
+            if (filter == "unassigned")
+            {
+                query = query.Where(
+                    i => i.Technician.TechnicianId == null);
+                data.IncidentFilter = "unassigned";
+            }
+
+            data.Incidents = query.ToList();
+
+            HttpContext.Session.SetString("Active", "Incidents");
+
+            return View(data);
         }
 
         [HttpGet]
         public IActionResult Create()
         {
-            ViewBag.Action = "Add";
-            ViewBag.Products = context.Products.OrderBy(p => p.ProductId).ToList();
-            ViewBag.Customers = context.Customers.OrderBy(c => c.CustomerId).ToList();
-            ViewBag.Technicians = context.Technicians.OrderBy(t => t.TechnicianId).ToList();
 
-            return View("Edit", new Incident());
+            var data = new IncidentListViewModel
+            {
+                Products = context.Products.ToList(),
+                Technicians = context.Technicians.ToList(),
+                Customers = context.Customers.ToList(),
+                Incident = new Incident(),
+                Operation = "add"
+            };
+
+            return View("Edit", data);
         }
 
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            ViewBag.Action = "Edit";
-            ViewBag.Products = context.Products.OrderBy(p => p.ProductId).ToList();
-            ViewBag.Customers = context.Customers.OrderBy(c => c.CustomerId).ToList();
-            ViewBag.Technicians = context.Technicians.OrderBy(t => t.TechnicianId).ToList();
-            var incident = context.Incidents.Find(id);
-            return View(incident);
+            var data = new IncidentListViewModel
+            {
+                Products = context.Products.ToList(),
+                Technicians = context.Technicians.ToList(),
+                Customers = context.Customers.ToList(),
+                Incident = context.Incidents.Find(id),
+                Operation = "edit"
+            };
+
+            return View(data);
         }
 
         [HttpPost]
-        public IActionResult Edit(Incident incident)
+        public IActionResult Edit(IncidentListViewModel incidentListView)
         {
             if (ModelState.IsValid)
             {
-                if(incident.IncidentId == 0)
+                if(incidentListView.Incident.IncidentId == 0)
                 {
-                    if(incident.DateOpened == null)
+                    if(incidentListView.Incident.DateOpened == null)
                     {
-                        incident.DateOpened = DateTime.Now;
+                        incidentListView.Incident.DateOpened = DateTime.Now;
                     }
 
-                    context.Incidents.Add(incident);
+                    context.Incidents.Add(incidentListView.Incident);
                     context.SaveChanges();
                 }
                 else
                 {
-                    context.Incidents.Update(incident);
+                    context.Incidents.Update(incidentListView.Incident);
                     context.SaveChanges();
                 }
                 return RedirectToAction("Index");
             }
             else
             {
-                ViewBag.Action = (incident.IncidentId == 0) ? "Add" : "Edit";
-                ViewBag.Products = context.Products.OrderBy(p => p.ProductId).ToList();
-                ViewBag.Customers = context.Customers.OrderBy(c => c.CustomerId).ToList();
-                ViewBag.Technicians = context.Technicians.OrderBy(t => t.TechnicianId).ToList();
+                var data = new IncidentListViewModel
+                {
+                    Products = context.Products.ToList(),
+                    Technicians = context.Technicians.ToList(),
+                    Customers = context.Customers.ToList(),
+                    Incident = context.Incidents.Find(incidentListView.Incident.IncidentId),
+                    Operation = (incidentListView.Incident.IncidentId == 0) ? "Add" : "Edit"
+                };
 
-                return View(incident);
+                return View(data);
             }
         }
 

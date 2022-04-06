@@ -6,6 +6,13 @@
 }
 
 <div class="card flex justify-center items-center mt-36">
+    @if (TempData.Keys.Contains("message"))
+    {
+        <h4 class=" text-green-500 text-white mb-5">
+            @TempData["message"]
+        </h4>
+    }
+
     <h1 class="mb-20 text-4xl">Product Manager</h1>
     <div class="w-7/12 overflow-x-auto sm:overflow-auto " x-data="{
             open: false,

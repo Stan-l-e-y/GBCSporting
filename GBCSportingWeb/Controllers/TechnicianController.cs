@@ -17,6 +17,8 @@ namespace GBCSportingWeb.Controllers
                             .OrderBy(t => t.Name)
                             .ToList();
 
+            HttpContext.Session.SetString("Active", "Technicians");
+
             return View(Technicians);
         }
         [HttpGet]
